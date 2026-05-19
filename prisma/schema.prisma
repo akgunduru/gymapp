@@ -1,0 +1,494 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  TRAINER
+  DIETITIAN
+  ADMIN
+}
+
+enum FitnessGoal {
+  LOSE_WEIGHT
+  BUILD_MUSCLE
+  STRENGTH
+  HEALTH
+}
+
+enum FitnessLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum MatchRequestStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  CANCELLED
+}
+
+enum MatchStatus {
+  ACTIVE
+  ENDED
+  BLOCKED
+}
+
+enum ProfessionalType {
+  TRAINER
+  DIETITIAN
+}
+
+enum VerificationStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+enum ConsultationStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  COMPLETED
+}
+
+enum MealType {
+  BREAKFAST
+  LUNCH
+  DINNER
+  SNACK
+}
+
+enum MealSource {
+  MANUAL
+  AI_IMAGE
+}
+
+enum AnalysisStatus {
+  PROCESSING
+  COMPLETED
+  LOW_CONFIDENCE
+  FAILED
+}
+
+enum MuscleGroup {
+  CHEST
+  BACK
+  LEGS
+  SHOULDERS
+  ARMS
+  CORE
+  CARDIO
+  FULL_BODY
+}
+
+model User {
+  id           String   @id @default(uuid()) @db.Uuid
+  email        String   @unique
+  passwordHash String
+  role         UserRole @default(USER)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  profile               UserProfile?
+  fitnessPreference     FitnessPreference?
+  locations             UserLocation[]
+  createdWorkoutPlans   WorkoutPlan[]             @relation("WorkoutPlanCreator")
+  sentMatchRequests     BuddyMatchRequest[]       @relation("MatchRequester")
+  receivedMatchRequests BuddyMatchRequest[]       @relation("MatchReceiver")
+  matchesAsUserA        BuddyMatch[]              @relation("BuddyMatchUserA")
+  matchesAsUserB        BuddyMatch[]              @relation("BuddyMatchUserB")
+  nutritionLogs         NutritionLog[]
+  mealEntries           MealEntry[]
+  professionalProfile   ProfessionalProfile?
+  consultationRequests  ConsultationRequest[]     @relation("ConsultationRequester")
+  sentMessages          Message[]                 @relation("MessageSender")
+  receivedMessages      Message[]                 @relation("MessageReceiver")
+  reviewedCertificates  ProfessionalCertificate[] @relation("CertificateReviewer")
+  adminActions          AdminAction[]             @relation("AdminActions")
+
+  @@index([role])
+  @@index([createdAt])
+}
+
+model UserProfile {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @unique @db.Uuid
+  fullName  String
+  bio       String?
+  avatarUrl String?
+  birthDate DateTime?
+  city      String?
+  district  String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([city])
+  @@index([district])
+  @@index([city, district])
+  @@index([createdAt])
+}
+
+model FitnessPreference {
+  id                    String        @id @default(uuid()) @db.Uuid
+  userId                String        @unique @db.Uuid
+  goals                 FitnessGoal[] @default([])
+  level                 FitnessLevel  @default(BEGINNER)
+  preferredMuscleGroups MuscleGroup[] @default([])
+  weeklyWorkoutDays     Int           @default(3)
+  dailyCalorieGoal      Int           @default(2200)
+  dailyProteinGoal      Int           @default(120)
+  dailyCarbGoal         Int           @default(250)
+  dailyFatGoal          Int           @default(70)
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([level])
+  @@index([createdAt])
+}
+
+model UserLocation {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  label     String?
+  city      String
+  district  String
+  address   String?
+  latitude  Float
+  longitude Float
+  isPrimary Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([city])
+  @@index([district])
+  @@index([city, district])
+  @@index([createdAt])
+}
+
+model Gym {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String
+  description String?
+  address     String?
+  city        String
+  district    String
+  latitude    Float
+  longitude   Float
+  rating      Float    @default(0)
+  amenities   String[] @default([])
+  phone       String?
+  website     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  professionalProfiles ProfessionalProfile[]
+
+  @@index([city])
+  @@index([district])
+  @@index([city, district])
+  @@index([createdAt])
+}
+
+model Exercise {
+  id           String       @id @default(uuid()) @db.Uuid
+  name         String
+  muscleGroup  MuscleGroup
+  level        FitnessLevel
+  equipment    String?
+  instructions String?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  workoutPlanExercises WorkoutPlanExercise[]
+
+  @@index([muscleGroup])
+  @@index([level])
+  @@index([muscleGroup, level])
+  @@index([createdAt])
+}
+
+model WorkoutPlan {
+  id                       String       @id @default(uuid()) @db.Uuid
+  title                    String
+  description              String?
+  level                    FitnessLevel
+  goal                     FitnessGoal?
+  estimatedDurationMinutes Int          @default(45)
+  createdByUserId          String?      @db.Uuid
+  createdAt                DateTime     @default(now())
+  updatedAt                DateTime     @updatedAt
+
+  createdByUser User?                 @relation("WorkoutPlanCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  exercises     WorkoutPlanExercise[]
+
+  @@index([createdByUserId])
+  @@index([level])
+  @@index([goal])
+  @@index([createdAt])
+}
+
+model WorkoutPlanExercise {
+  id            String   @id @default(uuid()) @db.Uuid
+  workoutPlanId String   @db.Uuid
+  exerciseId    String   @db.Uuid
+  order         Int
+  sets          Int
+  reps          String
+  restSeconds   Int?
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  workoutPlan WorkoutPlan @relation(fields: [workoutPlanId], references: [id], onDelete: Cascade)
+  exercise    Exercise    @relation(fields: [exerciseId], references: [id], onDelete: Restrict)
+
+  @@unique([workoutPlanId, order])
+  @@index([workoutPlanId])
+  @@index([exerciseId])
+  @@index([createdAt])
+}
+
+model BuddyMatchRequest {
+  id          String             @id @default(uuid()) @db.Uuid
+  requesterId String             @db.Uuid
+  receiverId  String             @db.Uuid
+  status      MatchRequestStatus @default(PENDING)
+  message     String?
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+
+  requester User        @relation("MatchRequester", fields: [requesterId], references: [id], onDelete: Cascade)
+  receiver  User        @relation("MatchReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  match     BuddyMatch?
+
+  @@unique([requesterId, receiverId])
+  @@index([requesterId])
+  @@index([receiverId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model BuddyMatch {
+  id        String      @id @default(uuid()) @db.Uuid
+  requestId String?     @unique @db.Uuid
+  userAId   String      @db.Uuid
+  userBId   String      @db.Uuid
+  status    MatchStatus @default(ACTIVE)
+  matchedAt DateTime    @default(now())
+  endedAt   DateTime?
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  request  BuddyMatchRequest? @relation(fields: [requestId], references: [id], onDelete: SetNull)
+  userA    User               @relation("BuddyMatchUserA", fields: [userAId], references: [id], onDelete: Cascade)
+  userB    User               @relation("BuddyMatchUserB", fields: [userBId], references: [id], onDelete: Cascade)
+  messages Message[]
+
+  @@unique([userAId, userBId])
+  @@index([userAId])
+  @@index([userBId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model NutritionLog {
+  id            String   @id @default(uuid()) @db.Uuid
+  userId        String   @db.Uuid
+  logDate       DateTime @db.Date
+  totalCalories Int      @default(0)
+  totalProtein  Float    @default(0)
+  totalCarbs    Float    @default(0)
+  totalFat      Float    @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mealEntries MealEntry[]
+
+  @@unique([userId, logDate])
+  @@index([userId])
+  @@index([logDate])
+  @@index([createdAt])
+}
+
+model MealEntry {
+  id             String     @id @default(uuid()) @db.Uuid
+  nutritionLogId String     @db.Uuid
+  userId         String     @db.Uuid
+  mealType       MealType
+  source         MealSource @default(MANUAL)
+  name           String
+  calories       Int
+  protein        Float      @default(0)
+  carbs          Float      @default(0)
+  fat            Float      @default(0)
+  imagePath      String?
+  consumedAt     DateTime   @default(now())
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  nutritionLog  NutritionLog       @relation(fields: [nutritionLogId], references: [id], onDelete: Cascade)
+  user          User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  imageAnalysis MealImageAnalysis?
+
+  @@index([nutritionLogId])
+  @@index([userId])
+  @@index([mealType])
+  @@index([source])
+  @@index([createdAt])
+}
+
+model MealImageAnalysis {
+  id            String         @id @default(uuid()) @db.Uuid
+  mealEntryId   String         @unique @db.Uuid
+  status        AnalysisStatus @default(PROCESSING)
+  imagePath     String
+  estimatedName String?
+  calories      Int?
+  protein       Float?
+  carbs         Float?
+  fat           Float?
+  confidence    Float?
+  rawResult     Json?
+  notes         String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  mealEntry MealEntry @relation(fields: [mealEntryId], references: [id], onDelete: Cascade)
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+model ProfessionalProfile {
+  id                 String             @id @default(uuid()) @db.Uuid
+  userId             String             @unique @db.Uuid
+  type               ProfessionalType
+  headline           String?
+  bio                String?
+  specialties        String[]           @default([])
+  experienceYears    Int                @default(0)
+  city               String?
+  district           String?
+  hourlyRate         Float?
+  gymId              String?            @db.Uuid
+  verificationStatus VerificationStatus @default(PENDING)
+  verifiedAt         DateTime?
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  user                 User                      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  gym                  Gym?                      @relation(fields: [gymId], references: [id], onDelete: SetNull)
+  certificates         ProfessionalCertificate[]
+  consultationRequests ConsultationRequest[]     @relation("ProfessionalConsultations")
+
+  @@index([userId])
+  @@index([type])
+  @@index([verificationStatus])
+  @@index([type, verificationStatus])
+  @@index([city])
+  @@index([district])
+  @@index([city, district])
+  @@index([createdAt])
+}
+
+model ProfessionalCertificate {
+  id                    String             @id @default(uuid()) @db.Uuid
+  professionalProfileId String             @db.Uuid
+  title                 String
+  issuer                String?
+  filePath              String
+  verificationStatus    VerificationStatus @default(PENDING)
+  reviewedByAdminId     String?            @db.Uuid
+  reviewedAt            DateTime?
+  rejectionReason       String?
+  createdAt             DateTime           @default(now())
+  updatedAt             DateTime           @updatedAt
+
+  professionalProfile ProfessionalProfile @relation(fields: [professionalProfileId], references: [id], onDelete: Cascade)
+  reviewedByAdmin     User?               @relation("CertificateReviewer", fields: [reviewedByAdminId], references: [id], onDelete: SetNull)
+
+  @@index([professionalProfileId])
+  @@index([reviewedByAdminId])
+  @@index([verificationStatus])
+  @@index([createdAt])
+}
+
+model ConsultationRequest {
+  id                    String             @id @default(uuid()) @db.Uuid
+  requesterId           String             @db.Uuid
+  professionalProfileId String             @db.Uuid
+  status                ConsultationStatus @default(PENDING)
+  topic                 String
+  message               String
+  scheduledAt           DateTime?
+  completedAt           DateTime?
+  createdAt             DateTime           @default(now())
+  updatedAt             DateTime           @updatedAt
+
+  requester           User                @relation("ConsultationRequester", fields: [requesterId], references: [id], onDelete: Cascade)
+  professionalProfile ProfessionalProfile @relation("ProfessionalConsultations", fields: [professionalProfileId], references: [id], onDelete: Cascade)
+  messages            Message[]
+
+  @@index([requesterId])
+  @@index([professionalProfileId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Message {
+  id                    String    @id @default(uuid()) @db.Uuid
+  senderId              String    @db.Uuid
+  receiverId            String    @db.Uuid
+  buddyMatchId          String?   @db.Uuid
+  consultationRequestId String?   @db.Uuid
+  content               String
+  readAt                DateTime?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  sender              User                 @relation("MessageSender", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver            User                 @relation("MessageReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  buddyMatch          BuddyMatch?          @relation(fields: [buddyMatchId], references: [id], onDelete: SetNull)
+  consultationRequest ConsultationRequest? @relation(fields: [consultationRequestId], references: [id], onDelete: SetNull)
+
+  @@index([senderId])
+  @@index([receiverId])
+  @@index([buddyMatchId])
+  @@index([consultationRequestId])
+  @@index([createdAt])
+}
+
+model AdminAction {
+  id         String   @id @default(uuid()) @db.Uuid
+  adminId    String   @db.Uuid
+  action     String
+  targetType String
+  targetId   String   @db.Uuid
+  notes      String?
+  createdAt  DateTime @default(now())
+
+  admin User @relation("AdminActions", fields: [adminId], references: [id], onDelete: Cascade)
+
+  @@index([adminId])
+  @@index([action])
+  @@index([targetType, targetId])
+  @@index([createdAt])
+}
