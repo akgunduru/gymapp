@@ -1,0 +1,675 @@
+{
+  "modelType": "DecisionTreeClassifier",
+  "generatedAt": "2026-05-28T20:59:22.869810+00:00",
+  "featureNames": [
+    "calories",
+    "protein",
+    "carbs",
+    "fat",
+    "protein_ratio",
+    "carb_ratio",
+    "fat_ratio"
+  ],
+  "labels": [
+    "balanced",
+    "fat_loss_friendly",
+    "high_carb",
+    "high_fat",
+    "high_protein",
+    "muscle_gain_friendly"
+  ],
+  "labelDisplayNames": {
+    "high_protein": "High Protein Meal",
+    "high_carb": "High Carb Meal",
+    "balanced": "Balanced Meal",
+    "high_fat": "High Fat Meal",
+    "fat_loss_friendly": "Fat Loss Friendly",
+    "muscle_gain_friendly": "Muscle Gain Friendly"
+  },
+  "foodsCount": 212,
+  "metrics": {
+    "accuracy": 0.9879,
+    "trainingSamples": 4680,
+    "testSamples": 1320
+  },
+  "nodes": [
+    {
+      "id": 0,
+      "isLeaf": false,
+      "feature": "fat",
+      "threshold": 24.945001,
+      "left": 1,
+      "right": 30,
+      "predictedClass": "balanced",
+      "probability": 0.1667
+    },
+    {
+      "id": 1,
+      "isLeaf": false,
+      "feature": "protein",
+      "threshold": 23.99,
+      "left": 2,
+      "right": 7,
+      "predictedClass": "fat_loss_friendly",
+      "probability": 0.2833
+    },
+    {
+      "id": 2,
+      "isLeaf": false,
+      "feature": "carbs",
+      "threshold": 54.950001,
+      "left": 3,
+      "right": 4,
+      "predictedClass": "balanced",
+      "probability": 0.5153
+    },
+    {
+      "id": 3,
+      "isLeaf": true,
+      "predictedClass": "balanced",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 1.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 4,
+      "isLeaf": false,
+      "feature": "carb_ratio",
+      "threshold": 0.5788,
+      "left": 5,
+      "right": 6,
+      "predictedClass": "high_carb",
+      "probability": 0.9243
+    },
+    {
+      "id": 5,
+      "isLeaf": true,
+      "predictedClass": "balanced",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 1.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 6,
+      "isLeaf": true,
+      "predictedClass": "high_carb",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 1.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 7,
+      "isLeaf": false,
+      "feature": "calories",
+      "threshold": 449.524994,
+      "left": 8,
+      "right": 13,
+      "predictedClass": "fat_loss_friendly",
+      "probability": 0.5554
+    },
+    {
+      "id": 8,
+      "isLeaf": false,
+      "feature": "carbs",
+      "threshold": 57.639999,
+      "left": 9,
+      "right": 12,
+      "predictedClass": "fat_loss_friendly",
+      "probability": 0.9586
+    },
+    {
+      "id": 9,
+      "isLeaf": false,
+      "feature": "fat",
+      "threshold": 22.075,
+      "left": 10,
+      "right": 11,
+      "predictedClass": "fat_loss_friendly",
+      "probability": 0.9885
+    },
+    {
+      "id": 10,
+      "isLeaf": true,
+      "predictedClass": "fat_loss_friendly",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 1.0,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 11,
+      "isLeaf": true,
+      "predictedClass": "fat_loss_friendly",
+      "probability": 0.7693,
+      "classCounts": {
+        "balanced": 0.0401,
+        "fat_loss_friendly": 0.7693,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.1906,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 12,
+      "isLeaf": true,
+      "predictedClass": "high_carb",
+      "probability": 0.5543,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 0.2067,
+        "high_carb": 0.5543,
+        "high_fat": 0.0,
+        "high_protein": 0.239,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 13,
+      "isLeaf": false,
+      "feature": "protein",
+      "threshold": 29.975,
+      "left": 14,
+      "right": 21,
+      "predictedClass": "muscle_gain_friendly",
+      "probability": 0.6079
+    },
+    {
+      "id": 14,
+      "isLeaf": false,
+      "feature": "carb_ratio",
+      "threshold": 0.58265,
+      "left": 15,
+      "right": 20,
+      "predictedClass": "fat_loss_friendly",
+      "probability": 0.4909
+    },
+    {
+      "id": 15,
+      "isLeaf": false,
+      "feature": "fat",
+      "threshold": 22.24,
+      "left": 16,
+      "right": 19,
+      "predictedClass": "fat_loss_friendly",
+      "probability": 0.9519
+    },
+    {
+      "id": 16,
+      "isLeaf": false,
+      "feature": "calories",
+      "threshold": 546.11499,
+      "left": 17,
+      "right": 18,
+      "predictedClass": "fat_loss_friendly",
+      "probability": 0.9885
+    },
+    {
+      "id": 17,
+      "isLeaf": true,
+      "predictedClass": "fat_loss_friendly",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 1.0,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 18,
+      "isLeaf": true,
+      "predictedClass": "fat_loss_friendly",
+      "probability": 0.9705,
+      "classCounts": {
+        "balanced": 0.0295,
+        "fat_loss_friendly": 0.9705,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 19,
+      "isLeaf": true,
+      "predictedClass": "fat_loss_friendly",
+      "probability": 0.834,
+      "classCounts": {
+        "balanced": 0.166,
+        "fat_loss_friendly": 0.834,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 20,
+      "isLeaf": true,
+      "predictedClass": "high_carb",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 1.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 21,
+      "isLeaf": false,
+      "feature": "carbs",
+      "threshold": 35.199999,
+      "left": 22,
+      "right": 27,
+      "predictedClass": "muscle_gain_friendly",
+      "probability": 0.7806
+    },
+    {
+      "id": 22,
+      "isLeaf": false,
+      "feature": "calories",
+      "threshold": 554.699982,
+      "left": 23,
+      "right": 26,
+      "predictedClass": "fat_loss_friendly",
+      "probability": 0.7845
+    },
+    {
+      "id": 23,
+      "isLeaf": false,
+      "feature": "calories",
+      "threshold": 479.684998,
+      "left": 24,
+      "right": 25,
+      "predictedClass": "fat_loss_friendly",
+      "probability": 0.9953
+    },
+    {
+      "id": 24,
+      "isLeaf": true,
+      "predictedClass": "fat_loss_friendly",
+      "probability": 0.9859,
+      "classCounts": {
+        "balanced": 0.0141,
+        "fat_loss_friendly": 0.9859,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 25,
+      "isLeaf": true,
+      "predictedClass": "fat_loss_friendly",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 1.0,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 26,
+      "isLeaf": true,
+      "predictedClass": "high_protein",
+      "probability": 0.5715,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 0.4285,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.5715,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 27,
+      "isLeaf": false,
+      "feature": "protein",
+      "threshold": 31.925,
+      "left": 28,
+      "right": 29,
+      "predictedClass": "muscle_gain_friendly",
+      "probability": 0.9939
+    },
+    {
+      "id": 28,
+      "isLeaf": true,
+      "predictedClass": "muscle_gain_friendly",
+      "probability": 0.9118,
+      "classCounts": {
+        "balanced": 0.0118,
+        "fat_loss_friendly": 0.0485,
+        "high_carb": 0.0279,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 0.9118
+      }
+    },
+    {
+      "id": 29,
+      "isLeaf": true,
+      "predictedClass": "muscle_gain_friendly",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 1.0
+      }
+    },
+    {
+      "id": 30,
+      "isLeaf": false,
+      "feature": "protein_ratio",
+      "threshold": 0.32055,
+      "left": 31,
+      "right": 44,
+      "predictedClass": "high_fat",
+      "probability": 0.4047
+    },
+    {
+      "id": 31,
+      "isLeaf": false,
+      "feature": "fat_ratio",
+      "threshold": 0.4211,
+      "left": 32,
+      "right": 39,
+      "predictedClass": "high_fat",
+      "probability": 0.6968
+    },
+    {
+      "id": 32,
+      "isLeaf": false,
+      "feature": "protein",
+      "threshold": 29.97,
+      "left": 33,
+      "right": 36,
+      "predictedClass": "muscle_gain_friendly",
+      "probability": 0.7768
+    },
+    {
+      "id": 33,
+      "isLeaf": false,
+      "feature": "carb_ratio",
+      "threshold": 0.5803,
+      "left": 34,
+      "right": 35,
+      "predictedClass": "balanced",
+      "probability": 0.5829
+    },
+    {
+      "id": 34,
+      "isLeaf": true,
+      "predictedClass": "balanced",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 1.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 35,
+      "isLeaf": true,
+      "predictedClass": "high_carb",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 1.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 36,
+      "isLeaf": false,
+      "feature": "fat_ratio",
+      "threshold": 0.2482,
+      "left": 37,
+      "right": 38,
+      "predictedClass": "muscle_gain_friendly",
+      "probability": 1.0
+    },
+    {
+      "id": 37,
+      "isLeaf": true,
+      "predictedClass": "muscle_gain_friendly",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 1.0
+      }
+    },
+    {
+      "id": 38,
+      "isLeaf": true,
+      "predictedClass": "muscle_gain_friendly",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 1.0
+      }
+    },
+    {
+      "id": 39,
+      "isLeaf": false,
+      "feature": "fat",
+      "threshold": 27.99,
+      "left": 40,
+      "right": 41,
+      "predictedClass": "high_fat",
+      "probability": 0.9515
+    },
+    {
+      "id": 40,
+      "isLeaf": true,
+      "predictedClass": "balanced",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 1.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 41,
+      "isLeaf": false,
+      "feature": "carb_ratio",
+      "threshold": 0.0696,
+      "left": 42,
+      "right": 43,
+      "predictedClass": "high_fat",
+      "probability": 1.0
+    },
+    {
+      "id": 42,
+      "isLeaf": true,
+      "predictedClass": "high_fat",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 0.0,
+        "high_fat": 1.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 43,
+      "isLeaf": true,
+      "predictedClass": "high_fat",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 0.0,
+        "high_fat": 1.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 44,
+      "isLeaf": false,
+      "feature": "carb_ratio",
+      "threshold": 0.24,
+      "left": 45,
+      "right": 50,
+      "predictedClass": "high_protein",
+      "probability": 0.9169
+    },
+    {
+      "id": 45,
+      "isLeaf": false,
+      "feature": "carbs",
+      "threshold": 36.039999,
+      "left": 46,
+      "right": 49,
+      "predictedClass": "high_protein",
+      "probability": 0.9804
+    },
+    {
+      "id": 46,
+      "isLeaf": false,
+      "feature": "fat",
+      "threshold": 27.095,
+      "left": 47,
+      "right": 48,
+      "predictedClass": "high_protein",
+      "probability": 1.0
+    },
+    {
+      "id": 47,
+      "isLeaf": true,
+      "predictedClass": "high_protein",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 1.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 48,
+      "isLeaf": true,
+      "predictedClass": "high_protein",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 1.0,
+        "muscle_gain_friendly": 0.0
+      }
+    },
+    {
+      "id": 49,
+      "isLeaf": true,
+      "predictedClass": "high_protein",
+      "probability": 0.8515,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.8515,
+        "muscle_gain_friendly": 0.1485
+      }
+    },
+    {
+      "id": 50,
+      "isLeaf": false,
+      "feature": "fat_ratio",
+      "threshold": 0.34995,
+      "left": 51,
+      "right": 52,
+      "predictedClass": "muscle_gain_friendly",
+      "probability": 0.9033
+    },
+    {
+      "id": 51,
+      "isLeaf": true,
+      "predictedClass": "muscle_gain_friendly",
+      "probability": 1.0,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.0,
+        "muscle_gain_friendly": 1.0
+      }
+    },
+    {
+      "id": 52,
+      "isLeaf": true,
+      "predictedClass": "muscle_gain_friendly",
+      "probability": 0.7605,
+      "classCounts": {
+        "balanced": 0.0,
+        "fat_loss_friendly": 0.0,
+        "high_carb": 0.0,
+        "high_fat": 0.0,
+        "high_protein": 0.2395,
+        "muscle_gain_friendly": 0.7605
+      }
+    }
+  ]
+}

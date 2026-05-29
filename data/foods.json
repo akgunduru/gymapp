@@ -1,0 +1,4685 @@
+{
+  "notice": "Nutrition values are approximate and intended for demo guidance only.",
+  "generatedAt": "2026-05-28T20:59:22.658870+00:00",
+  "foods": [
+    {
+      "id": "egg",
+      "name": "Egg",
+      "aliases": [
+        "egg",
+        "eggs",
+        "whole egg"
+      ],
+      "servingType": "piece",
+      "calories": 72,
+      "protein": 6.3,
+      "carbs": 0.4,
+      "fat": 4.8,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 50,
+      "tags": [
+        "protein",
+        "whole_food"
+      ],
+      "unitGrams": 50
+    },
+    {
+      "id": "egg-white",
+      "name": "Egg White",
+      "aliases": [
+        "egg white",
+        "egg whites"
+      ],
+      "servingType": "piece",
+      "calories": 17,
+      "protein": 3.6,
+      "carbs": 0.2,
+      "fat": 0.0,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 33,
+      "tags": [
+        "lean_protein",
+        "protein",
+        "whole_food"
+      ],
+      "unitGrams": 33
+    },
+    {
+      "id": "chicken-breast",
+      "name": "Chicken Breast",
+      "aliases": [
+        "chicken breast",
+        "chicken",
+        "grilled chicken",
+        "chicken breasts"
+      ],
+      "servingType": "100g",
+      "calories": 165,
+      "protein": 31,
+      "carbs": 0,
+      "fat": 3.6,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "lean_protein",
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "chicken-thigh",
+      "name": "Chicken Thigh",
+      "aliases": [
+        "chicken thigh",
+        "thigh",
+        "chicken leg",
+        "chicken thighs"
+      ],
+      "servingType": "100g",
+      "calories": 209,
+      "protein": 26,
+      "carbs": 0,
+      "fat": 10.9,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "turkey-breast",
+      "name": "Turkey Breast",
+      "aliases": [
+        "turkey breast",
+        "turkey",
+        "turkey slices",
+        "turkey breasts"
+      ],
+      "servingType": "100g",
+      "calories": 135,
+      "protein": 29,
+      "carbs": 0,
+      "fat": 1.5,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "lean_protein",
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "ground-turkey",
+      "name": "Ground Turkey",
+      "aliases": [
+        "ground turkey",
+        "minced turkey",
+        "ground turkeies"
+      ],
+      "servingType": "100g",
+      "calories": 176,
+      "protein": 27,
+      "carbs": 0,
+      "fat": 8,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "tuna",
+      "name": "Tuna",
+      "aliases": [
+        "tuna",
+        "canned tuna",
+        "tuna fish",
+        "tunas"
+      ],
+      "servingType": "100g",
+      "calories": 132,
+      "protein": 28,
+      "carbs": 0,
+      "fat": 1,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "lean_protein",
+        "protein",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "can": 120
+      }
+    },
+    {
+      "id": "salmon",
+      "name": "Salmon",
+      "aliases": [
+        "salmon",
+        "salmon fillet",
+        "salmons"
+      ],
+      "servingType": "100g",
+      "calories": 208,
+      "protein": 20,
+      "carbs": 0,
+      "fat": 13,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 140,
+      "tags": [
+        "protein",
+        "healthy_fat",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "cod",
+      "name": "Cod",
+      "aliases": [
+        "cod",
+        "white fish",
+        "cods"
+      ],
+      "servingType": "100g",
+      "calories": 105,
+      "protein": 23,
+      "carbs": 0,
+      "fat": 0.9,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 140,
+      "tags": [
+        "lean_protein",
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "tilapia",
+      "name": "Tilapia",
+      "aliases": [
+        "tilapia",
+        "tilapia fish",
+        "tilapias"
+      ],
+      "servingType": "100g",
+      "calories": 129,
+      "protein": 26,
+      "carbs": 0,
+      "fat": 2.7,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 140,
+      "tags": [
+        "lean_protein",
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "shrimp",
+      "name": "Shrimp",
+      "aliases": [
+        "shrimp",
+        "prawns",
+        "shrimps"
+      ],
+      "servingType": "100g",
+      "calories": 99,
+      "protein": 24,
+      "carbs": 0.2,
+      "fat": 0.3,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "lean_protein",
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "crab",
+      "name": "Crab",
+      "aliases": [
+        "crab",
+        "crab meat",
+        "crabs"
+      ],
+      "servingType": "100g",
+      "calories": 97,
+      "protein": 19,
+      "carbs": 0,
+      "fat": 1.5,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "lean_protein",
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "mussels",
+      "name": "Mussels",
+      "aliases": [
+        "mussels",
+        "mussel"
+      ],
+      "servingType": "100g",
+      "calories": 172,
+      "protein": 24,
+      "carbs": 7,
+      "fat": 4.5,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "sardines",
+      "name": "Sardines",
+      "aliases": [
+        "sardines",
+        "sardine"
+      ],
+      "servingType": "100g",
+      "calories": 208,
+      "protein": 25,
+      "carbs": 0,
+      "fat": 11,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "protein",
+        "healthy_fat",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "can": 100
+      }
+    },
+    {
+      "id": "mackerel",
+      "name": "Mackerel",
+      "aliases": [
+        "mackerel",
+        "mackerel fish",
+        "mackerels"
+      ],
+      "servingType": "100g",
+      "calories": 205,
+      "protein": 19,
+      "carbs": 0,
+      "fat": 14,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 130,
+      "tags": [
+        "protein",
+        "healthy_fat",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "lean-beef",
+      "name": "Lean Beef",
+      "aliases": [
+        "lean beef",
+        "beef",
+        "ground beef",
+        "lean beefs"
+      ],
+      "servingType": "100g",
+      "calories": 217,
+      "protein": 26,
+      "carbs": 0,
+      "fat": 12,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "steak",
+      "name": "Steak",
+      "aliases": [
+        "steak",
+        "beef steak",
+        "steaks"
+      ],
+      "servingType": "100g",
+      "calories": 250,
+      "protein": 26,
+      "carbs": 0,
+      "fat": 15,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "pork-loin",
+      "name": "Pork Loin",
+      "aliases": [
+        "pork loin",
+        "pork",
+        "pork loins"
+      ],
+      "servingType": "100g",
+      "calories": 190,
+      "protein": 27,
+      "carbs": 0,
+      "fat": 8,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "turkey-sausage",
+      "name": "Turkey Sausage",
+      "aliases": [
+        "turkey sausage",
+        "sausage",
+        "turkey sausages"
+      ],
+      "servingType": "100g",
+      "calories": 196,
+      "protein": 19,
+      "carbs": 2,
+      "fat": 12,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 90,
+      "tags": [
+        "protein",
+        "processed"
+      ]
+    },
+    {
+      "id": "chicken-sausage",
+      "name": "Chicken Sausage",
+      "aliases": [
+        "chicken sausage",
+        "chicken sausages"
+      ],
+      "servingType": "100g",
+      "calories": 172,
+      "protein": 18,
+      "carbs": 3,
+      "fat": 10,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 90,
+      "tags": [
+        "protein",
+        "processed"
+      ]
+    },
+    {
+      "id": "tofu",
+      "name": "Tofu",
+      "aliases": [
+        "tofu",
+        "firm tofu",
+        "tofus"
+      ],
+      "servingType": "100g",
+      "calories": 144,
+      "protein": 17,
+      "carbs": 3,
+      "fat": 8,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "tempeh",
+      "name": "Tempeh",
+      "aliases": [
+        "tempeh",
+        "soy tempeh",
+        "tempehs"
+      ],
+      "servingType": "100g",
+      "calories": 193,
+      "protein": 20,
+      "carbs": 9,
+      "fat": 11,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "seitan",
+      "name": "Seitan",
+      "aliases": [
+        "seitan",
+        "wheat protein",
+        "seitans"
+      ],
+      "servingType": "100g",
+      "calories": 370,
+      "protein": 75,
+      "carbs": 14,
+      "fat": 2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "lean_protein",
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "edamame",
+      "name": "Edamame",
+      "aliases": [
+        "edamame",
+        "soybeans",
+        "edamames"
+      ],
+      "servingType": "100g",
+      "calories": 121,
+      "protein": 11,
+      "carbs": 9,
+      "fat": 5,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "protein",
+        "carb",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "lentils",
+      "name": "Lentils",
+      "aliases": [
+        "lentils",
+        "lentil",
+        "green lentils"
+      ],
+      "servingType": "100g",
+      "calories": 116,
+      "protein": 9,
+      "carbs": 20,
+      "fat": 0.4,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "protein",
+        "carb",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 200,
+        "bowl": 250
+      }
+    },
+    {
+      "id": "chickpeas",
+      "name": "Chickpeas",
+      "aliases": [
+        "chickpeas",
+        "chickpea",
+        "garbanzo beans"
+      ],
+      "servingType": "100g",
+      "calories": 164,
+      "protein": 9,
+      "carbs": 27,
+      "fat": 2.6,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "protein",
+        "carb",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 165,
+        "bowl": 230
+      }
+    },
+    {
+      "id": "black-beans",
+      "name": "Black Beans",
+      "aliases": [
+        "black beans",
+        "black bean"
+      ],
+      "servingType": "100g",
+      "calories": 132,
+      "protein": 9,
+      "carbs": 24,
+      "fat": 0.5,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "protein",
+        "carb",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "kidney-beans",
+      "name": "Kidney Beans",
+      "aliases": [
+        "kidney beans",
+        "kidney bean"
+      ],
+      "servingType": "100g",
+      "calories": 127,
+      "protein": 9,
+      "carbs": 23,
+      "fat": 0.5,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "protein",
+        "carb",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "white-beans",
+      "name": "White Beans",
+      "aliases": [
+        "white beans",
+        "white bean"
+      ],
+      "servingType": "100g",
+      "calories": 139,
+      "protein": 10,
+      "carbs": 25,
+      "fat": 0.4,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "protein",
+        "carb",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "hummus",
+      "name": "Hummus",
+      "aliases": [
+        "hummus",
+        "humus"
+      ],
+      "servingType": "100g",
+      "calories": 166,
+      "protein": 8,
+      "carbs": 14,
+      "fat": 10,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 60,
+      "tags": [
+        "protein",
+        "carb",
+        "healthy_fat",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "tablespoon": 15
+      }
+    },
+    {
+      "id": "greek-yogurt",
+      "name": "Greek Yogurt",
+      "aliases": [
+        "greek yogurt",
+        "greek yoghurt",
+        "strained yogurt",
+        "greek yogurts"
+      ],
+      "servingType": "100g",
+      "calories": 73,
+      "protein": 10,
+      "carbs": 3.9,
+      "fat": 1.9,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 170,
+      "tags": [
+        "dairy",
+        "protein",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 245
+      }
+    },
+    {
+      "id": "cottage-cheese",
+      "name": "Cottage Cheese",
+      "aliases": [
+        "cottage cheese",
+        "cottage",
+        "cottage cheeses"
+      ],
+      "servingType": "100g",
+      "calories": 98,
+      "protein": 11,
+      "carbs": 3.4,
+      "fat": 4.3,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "dairy",
+        "protein",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 220
+      }
+    },
+    {
+      "id": "protein-powder",
+      "name": "Protein Powder",
+      "aliases": [
+        "protein powder",
+        "whey",
+        "whey protein",
+        "protein scoop",
+        "protein powders"
+      ],
+      "servingType": "scoop",
+      "calories": 120,
+      "protein": 24,
+      "carbs": 3,
+      "fat": 1.5,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 30,
+      "tags": [
+        "lean_protein",
+        "protein",
+        "processed"
+      ],
+      "unitGrams": 30,
+      "unitWeights": {
+        "scoop": 30
+      }
+    },
+    {
+      "id": "protein-shake",
+      "name": "Protein Shake",
+      "aliases": [
+        "protein shake",
+        "whey shake",
+        "shake",
+        "protein shakes"
+      ],
+      "servingType": "bottle",
+      "calories": 180,
+      "protein": 30,
+      "carbs": 8,
+      "fat": 3,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 330,
+      "tags": [
+        "lean_protein",
+        "protein",
+        "processed"
+      ],
+      "unitGrams": 330,
+      "unitWeights": {
+        "bottle": 330
+      }
+    },
+    {
+      "id": "white-rice",
+      "name": "White Rice",
+      "aliases": [
+        "white rice",
+        "rice",
+        "cooked rice",
+        "white rices"
+      ],
+      "servingType": "100g",
+      "calories": 130,
+      "protein": 2.7,
+      "carbs": 28,
+      "fat": 0.3,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "carb",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 160,
+        "bowl": 250
+      }
+    },
+    {
+      "id": "brown-rice",
+      "name": "Brown Rice",
+      "aliases": [
+        "brown rice",
+        "brown rices"
+      ],
+      "servingType": "100g",
+      "calories": 111,
+      "protein": 2.6,
+      "carbs": 23,
+      "fat": 0.9,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "carb",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 195,
+        "bowl": 260
+      }
+    },
+    {
+      "id": "basmati-rice",
+      "name": "Basmati Rice",
+      "aliases": [
+        "basmati rice",
+        "basmati",
+        "basmati rices"
+      ],
+      "servingType": "100g",
+      "calories": 121,
+      "protein": 3.5,
+      "carbs": 25,
+      "fat": 0.4,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "carb",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 160
+      }
+    },
+    {
+      "id": "bulgur",
+      "name": "Bulgur",
+      "aliases": [
+        "bulgur",
+        "bulgur wheat",
+        "bulgurs"
+      ],
+      "servingType": "100g",
+      "calories": 83,
+      "protein": 3.1,
+      "carbs": 19,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 160,
+      "tags": [
+        "carb",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 180
+      }
+    },
+    {
+      "id": "couscous",
+      "name": "Couscous",
+      "aliases": [
+        "couscous",
+        "cuscus"
+      ],
+      "servingType": "100g",
+      "calories": 112,
+      "protein": 3.8,
+      "carbs": 23,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 160,
+      "tags": [
+        "carb",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 175
+      }
+    },
+    {
+      "id": "quinoa",
+      "name": "Quinoa",
+      "aliases": [
+        "quinoa",
+        "cooked quinoa",
+        "quinoas"
+      ],
+      "servingType": "100g",
+      "calories": 120,
+      "protein": 4.4,
+      "carbs": 21,
+      "fat": 1.9,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "protein",
+        "carb",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 185
+      }
+    },
+    {
+      "id": "oats",
+      "name": "Oats",
+      "aliases": [
+        "oats",
+        "oatmeal",
+        "rolled oats"
+      ],
+      "servingType": "100g",
+      "calories": 389,
+      "protein": 16.9,
+      "carbs": 66,
+      "fat": 6.9,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 50,
+      "tags": [
+        "carb",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 80,
+        "bowl": 60
+      }
+    },
+    {
+      "id": "granola",
+      "name": "Granola",
+      "aliases": [
+        "granola",
+        "granola cereal",
+        "granolas"
+      ],
+      "servingType": "100g",
+      "calories": 471,
+      "protein": 10,
+      "carbs": 64,
+      "fat": 20,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 45,
+      "tags": [
+        "carb",
+        "fiber",
+        "processed"
+      ],
+      "unitWeights": {
+        "cup": 90
+      }
+    },
+    {
+      "id": "muesli",
+      "name": "Muesli",
+      "aliases": [
+        "muesli",
+        "muesli cereal",
+        "mueslis"
+      ],
+      "servingType": "100g",
+      "calories": 340,
+      "protein": 10,
+      "carbs": 66,
+      "fat": 5,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 55,
+      "tags": [
+        "carb",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 85
+      }
+    },
+    {
+      "id": "whole-wheat-bread",
+      "name": "Whole Wheat Bread",
+      "aliases": [
+        "whole wheat bread",
+        "whole grain bread",
+        "brown bread",
+        "whole wheat breads"
+      ],
+      "servingType": "slice",
+      "calories": 80,
+      "protein": 4,
+      "carbs": 14,
+      "fat": 1,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 32,
+      "tags": [
+        "carb",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 32,
+      "unitWeights": {
+        "slice": 32
+      }
+    },
+    {
+      "id": "white-bread",
+      "name": "White Bread",
+      "aliases": [
+        "white bread",
+        "bread",
+        "toast bread",
+        "white breads"
+      ],
+      "servingType": "slice",
+      "calories": 75,
+      "protein": 2.5,
+      "carbs": 14,
+      "fat": 1,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 30,
+      "tags": [
+        "carb",
+        "processed"
+      ],
+      "unitGrams": 30,
+      "unitWeights": {
+        "slice": 30
+      }
+    },
+    {
+      "id": "sourdough-bread",
+      "name": "Sourdough Bread",
+      "aliases": [
+        "sourdough bread",
+        "sourdough",
+        "sourdough breads"
+      ],
+      "servingType": "slice",
+      "calories": 110,
+      "protein": 4,
+      "carbs": 22,
+      "fat": 1,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 45,
+      "tags": [
+        "carb",
+        "whole_food"
+      ],
+      "unitGrams": 45,
+      "unitWeights": {
+        "slice": 45
+      }
+    },
+    {
+      "id": "rye-bread",
+      "name": "Rye Bread",
+      "aliases": [
+        "rye bread",
+        "rye",
+        "rye breads"
+      ],
+      "servingType": "slice",
+      "calories": 83,
+      "protein": 3,
+      "carbs": 15,
+      "fat": 1.1,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 32,
+      "tags": [
+        "carb",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 32,
+      "unitWeights": {
+        "slice": 32
+      }
+    },
+    {
+      "id": "pita-bread",
+      "name": "Pita Bread",
+      "aliases": [
+        "pita bread",
+        "pita",
+        "pita breads"
+      ],
+      "servingType": "piece",
+      "calories": 165,
+      "protein": 5.5,
+      "carbs": 33,
+      "fat": 1,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 60,
+      "tags": [
+        "carb",
+        "whole_food"
+      ],
+      "unitGrams": 60
+    },
+    {
+      "id": "tortilla",
+      "name": "Tortilla",
+      "aliases": [
+        "tortilla",
+        "wrap",
+        "flour tortilla",
+        "tortillas"
+      ],
+      "servingType": "piece",
+      "calories": 140,
+      "protein": 4,
+      "carbs": 24,
+      "fat": 3.5,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 50,
+      "tags": [
+        "carb",
+        "processed"
+      ],
+      "unitGrams": 50
+    },
+    {
+      "id": "bagel",
+      "name": "Bagel",
+      "aliases": [
+        "bagel",
+        "plain bagel",
+        "bagels"
+      ],
+      "servingType": "piece",
+      "calories": 270,
+      "protein": 10,
+      "carbs": 53,
+      "fat": 1.5,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 100,
+      "tags": [
+        "carb",
+        "whole_food"
+      ],
+      "unitGrams": 100
+    },
+    {
+      "id": "simit",
+      "name": "Simit",
+      "aliases": [
+        "simit",
+        "turkish bagel",
+        "simits"
+      ],
+      "servingType": "piece",
+      "calories": 300,
+      "protein": 9,
+      "carbs": 52,
+      "fat": 7,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 100,
+      "tags": [
+        "carb",
+        "processed"
+      ],
+      "unitGrams": 100
+    },
+    {
+      "id": "pasta",
+      "name": "Pasta",
+      "aliases": [
+        "pasta",
+        "spaghetti",
+        "macaroni",
+        "cooked pasta",
+        "pastas"
+      ],
+      "servingType": "100g",
+      "calories": 158,
+      "protein": 5.8,
+      "carbs": 31,
+      "fat": 0.9,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 180,
+      "tags": [
+        "carb",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 140,
+        "bowl": 260
+      }
+    },
+    {
+      "id": "whole-wheat-pasta",
+      "name": "Whole Wheat Pasta",
+      "aliases": [
+        "whole wheat pasta",
+        "whole grain pasta",
+        "whole wheat pastas"
+      ],
+      "servingType": "100g",
+      "calories": 149,
+      "protein": 6,
+      "carbs": 30,
+      "fat": 1.5,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 180,
+      "tags": [
+        "carb",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "rice-noodles",
+      "name": "Rice Noodles",
+      "aliases": [
+        "rice noodles",
+        "rice noodle"
+      ],
+      "servingType": "100g",
+      "calories": 109,
+      "protein": 1.8,
+      "carbs": 25,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 180,
+      "tags": [
+        "carb",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "udon-noodles",
+      "name": "Udon Noodles",
+      "aliases": [
+        "udon noodles",
+        "udon"
+      ],
+      "servingType": "100g",
+      "calories": 127,
+      "protein": 3.5,
+      "carbs": 26,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 180,
+      "tags": [
+        "carb",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "ramen-noodles",
+      "name": "Ramen Noodles",
+      "aliases": [
+        "ramen noodles",
+        "ramen"
+      ],
+      "servingType": "100g",
+      "calories": 188,
+      "protein": 5,
+      "carbs": 27,
+      "fat": 7,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 180,
+      "tags": [
+        "carb",
+        "processed"
+      ]
+    },
+    {
+      "id": "potato",
+      "name": "Potato",
+      "aliases": [
+        "potato",
+        "boiled potato",
+        "potatos"
+      ],
+      "servingType": "100g",
+      "calories": 87,
+      "protein": 1.9,
+      "carbs": 20,
+      "fat": 0.1,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 180,
+      "tags": [
+        "carb",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "piece": 170
+      }
+    },
+    {
+      "id": "sweet-potato",
+      "name": "Sweet Potato",
+      "aliases": [
+        "sweet potato",
+        "yam",
+        "sweet potatos"
+      ],
+      "servingType": "100g",
+      "calories": 86,
+      "protein": 1.6,
+      "carbs": 20,
+      "fat": 0.1,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 180,
+      "tags": [
+        "carb",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "piece": 150
+      }
+    },
+    {
+      "id": "corn",
+      "name": "Corn",
+      "aliases": [
+        "corn",
+        "sweet corn",
+        "corns"
+      ],
+      "servingType": "100g",
+      "calories": 96,
+      "protein": 3.4,
+      "carbs": 21,
+      "fat": 1.5,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "carb",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 165
+      }
+    },
+    {
+      "id": "peas",
+      "name": "Peas",
+      "aliases": [
+        "peas",
+        "green peas"
+      ],
+      "servingType": "100g",
+      "calories": 81,
+      "protein": 5.4,
+      "carbs": 14,
+      "fat": 0.4,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "carb",
+        "fiber",
+        "vegetable",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "barley",
+      "name": "Barley",
+      "aliases": [
+        "barley",
+        "cooked barley",
+        "barleies"
+      ],
+      "servingType": "100g",
+      "calories": 123,
+      "protein": 2.3,
+      "carbs": 28,
+      "fat": 0.4,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 160,
+      "tags": [
+        "carb",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "buckwheat",
+      "name": "Buckwheat",
+      "aliases": [
+        "buckwheat",
+        "buckwheat groats",
+        "buckwheats"
+      ],
+      "servingType": "100g",
+      "calories": 92,
+      "protein": 3.4,
+      "carbs": 20,
+      "fat": 0.6,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 160,
+      "tags": [
+        "carb",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "farro",
+      "name": "Farro",
+      "aliases": [
+        "farro",
+        "emmer",
+        "farros"
+      ],
+      "servingType": "100g",
+      "calories": 140,
+      "protein": 5,
+      "carbs": 27,
+      "fat": 1,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 160,
+      "tags": [
+        "carb",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "millet",
+      "name": "Millet",
+      "aliases": [
+        "millet",
+        "cooked millet",
+        "millets"
+      ],
+      "servingType": "100g",
+      "calories": 119,
+      "protein": 3.5,
+      "carbs": 24,
+      "fat": 1,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 160,
+      "tags": [
+        "carb",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "polenta",
+      "name": "Polenta",
+      "aliases": [
+        "polenta",
+        "cornmeal",
+        "polentas"
+      ],
+      "servingType": "100g",
+      "calories": 70,
+      "protein": 1.5,
+      "carbs": 15,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 180,
+      "tags": [
+        "carb",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "rice-cake",
+      "name": "Rice Cake",
+      "aliases": [
+        "rice cake",
+        "rice cakes"
+      ],
+      "servingType": "piece",
+      "calories": 35,
+      "protein": 0.7,
+      "carbs": 7.3,
+      "fat": 0.3,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 9,
+      "tags": [
+        "carb",
+        "processed"
+      ],
+      "unitGrams": 9
+    },
+    {
+      "id": "crackers",
+      "name": "Crackers",
+      "aliases": [
+        "crackers",
+        "whole wheat crackers"
+      ],
+      "servingType": "100g",
+      "calories": 430,
+      "protein": 9,
+      "carbs": 70,
+      "fat": 12,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 30,
+      "tags": [
+        "carb",
+        "processed"
+      ]
+    },
+    {
+      "id": "pretzels",
+      "name": "Pretzels",
+      "aliases": [
+        "pretzels",
+        "pretzel"
+      ],
+      "servingType": "100g",
+      "calories": 380,
+      "protein": 10,
+      "carbs": 80,
+      "fat": 3,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 35,
+      "tags": [
+        "carb",
+        "processed"
+      ]
+    },
+    {
+      "id": "popcorn",
+      "name": "Popcorn",
+      "aliases": [
+        "popcorn",
+        "air popped popcorn",
+        "popcorns"
+      ],
+      "servingType": "100g",
+      "calories": 387,
+      "protein": 13,
+      "carbs": 78,
+      "fat": 4.5,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 30,
+      "tags": [
+        "carb",
+        "fiber",
+        "processed"
+      ],
+      "unitWeights": {
+        "cup": 8,
+        "bowl": 25
+      }
+    },
+    {
+      "id": "cereal",
+      "name": "Cereal",
+      "aliases": [
+        "cereal",
+        "breakfast cereal",
+        "cereals"
+      ],
+      "servingType": "100g",
+      "calories": 379,
+      "protein": 7,
+      "carbs": 84,
+      "fat": 1,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 45,
+      "tags": [
+        "carb",
+        "processed",
+        "added_sugar"
+      ],
+      "unitWeights": {
+        "cup": 40
+      }
+    },
+    {
+      "id": "bran-cereal",
+      "name": "Bran Cereal",
+      "aliases": [
+        "bran cereal",
+        "fiber cereal",
+        "bran cereals"
+      ],
+      "servingType": "100g",
+      "calories": 216,
+      "protein": 10,
+      "carbs": 64,
+      "fat": 4,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 45,
+      "tags": [
+        "carb",
+        "fiber",
+        "processed"
+      ]
+    },
+    {
+      "id": "pancake",
+      "name": "Pancake",
+      "aliases": [
+        "pancake",
+        "pancakes"
+      ],
+      "servingType": "piece",
+      "calories": 95,
+      "protein": 2.4,
+      "carbs": 16,
+      "fat": 2.5,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 40,
+      "tags": [
+        "carb",
+        "processed"
+      ],
+      "unitGrams": 40
+    },
+    {
+      "id": "waffle",
+      "name": "Waffle",
+      "aliases": [
+        "waffle",
+        "waffles"
+      ],
+      "servingType": "piece",
+      "calories": 180,
+      "protein": 4,
+      "carbs": 30,
+      "fat": 5,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 70,
+      "tags": [
+        "carb",
+        "processed"
+      ],
+      "unitGrams": 70
+    },
+    {
+      "id": "banana",
+      "name": "Banana",
+      "aliases": [
+        "banana",
+        "bananas"
+      ],
+      "servingType": "piece",
+      "calories": 105,
+      "protein": 1.3,
+      "carbs": 27,
+      "fat": 0.3,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 118,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 118
+    },
+    {
+      "id": "apple",
+      "name": "Apple",
+      "aliases": [
+        "apple",
+        "apples"
+      ],
+      "servingType": "piece",
+      "calories": 95,
+      "protein": 0.5,
+      "carbs": 25,
+      "fat": 0.3,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 182,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 182
+    },
+    {
+      "id": "orange",
+      "name": "Orange",
+      "aliases": [
+        "orange",
+        "oranges"
+      ],
+      "servingType": "piece",
+      "calories": 62,
+      "protein": 1.2,
+      "carbs": 15,
+      "fat": 0.2,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 131,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 131
+    },
+    {
+      "id": "strawberries",
+      "name": "Strawberries",
+      "aliases": [
+        "strawberries",
+        "strawberry"
+      ],
+      "servingType": "100g",
+      "calories": 32,
+      "protein": 0.7,
+      "carbs": 7.7,
+      "fat": 0.3,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 150
+      }
+    },
+    {
+      "id": "blueberries",
+      "name": "Blueberries",
+      "aliases": [
+        "blueberries",
+        "blueberry"
+      ],
+      "servingType": "100g",
+      "calories": 57,
+      "protein": 0.7,
+      "carbs": 14,
+      "fat": 0.3,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 148
+      }
+    },
+    {
+      "id": "raspberries",
+      "name": "Raspberries",
+      "aliases": [
+        "raspberries",
+        "raspberry"
+      ],
+      "servingType": "100g",
+      "calories": 52,
+      "protein": 1.2,
+      "carbs": 12,
+      "fat": 0.7,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 123
+      }
+    },
+    {
+      "id": "blackberries",
+      "name": "Blackberries",
+      "aliases": [
+        "blackberries",
+        "blackberry"
+      ],
+      "servingType": "100g",
+      "calories": 43,
+      "protein": 1.4,
+      "carbs": 10,
+      "fat": 0.5,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "grapes",
+      "name": "Grapes",
+      "aliases": [
+        "grapes",
+        "grape"
+      ],
+      "servingType": "100g",
+      "calories": 69,
+      "protein": 0.7,
+      "carbs": 18,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 150
+      }
+    },
+    {
+      "id": "watermelon",
+      "name": "Watermelon",
+      "aliases": [
+        "watermelon",
+        "melon",
+        "watermelons"
+      ],
+      "servingType": "100g",
+      "calories": 30,
+      "protein": 0.6,
+      "carbs": 8,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 250,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "cantaloupe",
+      "name": "Cantaloupe",
+      "aliases": [
+        "cantaloupe",
+        "cantaloupe melon",
+        "cantaloupes"
+      ],
+      "servingType": "100g",
+      "calories": 34,
+      "protein": 0.8,
+      "carbs": 8,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 200,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "pineapple",
+      "name": "Pineapple",
+      "aliases": [
+        "pineapple",
+        "ananas",
+        "pineapples"
+      ],
+      "servingType": "100g",
+      "calories": 50,
+      "protein": 0.5,
+      "carbs": 13,
+      "fat": 0.1,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "mango",
+      "name": "Mango",
+      "aliases": [
+        "mango",
+        "mangos"
+      ],
+      "servingType": "100g",
+      "calories": 60,
+      "protein": 0.8,
+      "carbs": 15,
+      "fat": 0.4,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 165,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "pear",
+      "name": "Pear",
+      "aliases": [
+        "pear",
+        "pears"
+      ],
+      "servingType": "piece",
+      "calories": 101,
+      "protein": 0.6,
+      "carbs": 27,
+      "fat": 0.2,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 178,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 178
+    },
+    {
+      "id": "peach",
+      "name": "Peach",
+      "aliases": [
+        "peach",
+        "peaches",
+        "peachs"
+      ],
+      "servingType": "piece",
+      "calories": 59,
+      "protein": 1.4,
+      "carbs": 14,
+      "fat": 0.4,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 150,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 150
+    },
+    {
+      "id": "kiwi",
+      "name": "Kiwi",
+      "aliases": [
+        "kiwi",
+        "kiwifruit",
+        "kiwis"
+      ],
+      "servingType": "piece",
+      "calories": 42,
+      "protein": 0.8,
+      "carbs": 10,
+      "fat": 0.4,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 69,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 69
+    },
+    {
+      "id": "pomegranate",
+      "name": "Pomegranate",
+      "aliases": [
+        "pomegranate",
+        "pomegranate seeds",
+        "pomegranates"
+      ],
+      "servingType": "100g",
+      "calories": 83,
+      "protein": 1.7,
+      "carbs": 19,
+      "fat": 1.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "dates",
+      "name": "Dates",
+      "aliases": [
+        "dates",
+        "date"
+      ],
+      "servingType": "piece",
+      "calories": 66,
+      "protein": 0.4,
+      "carbs": 18,
+      "fat": 0,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 24,
+      "tags": [
+        "fruit",
+        "fiber",
+        "added_sugar",
+        "whole_food"
+      ],
+      "unitGrams": 24
+    },
+    {
+      "id": "raisins",
+      "name": "Raisins",
+      "aliases": [
+        "raisins",
+        "raisin"
+      ],
+      "servingType": "100g",
+      "calories": 299,
+      "protein": 3.1,
+      "carbs": 79,
+      "fat": 0.5,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 40,
+      "tags": [
+        "fruit",
+        "fiber",
+        "added_sugar",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "figs",
+      "name": "Figs",
+      "aliases": [
+        "figs",
+        "fig"
+      ],
+      "servingType": "piece",
+      "calories": 37,
+      "protein": 0.4,
+      "carbs": 10,
+      "fat": 0.2,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 50,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 50
+    },
+    {
+      "id": "cherries",
+      "name": "Cherries",
+      "aliases": [
+        "cherries",
+        "cherry"
+      ],
+      "servingType": "100g",
+      "calories": 63,
+      "protein": 1.1,
+      "carbs": 16,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "plum",
+      "name": "Plum",
+      "aliases": [
+        "plum",
+        "plums"
+      ],
+      "servingType": "piece",
+      "calories": 30,
+      "protein": 0.5,
+      "carbs": 7.5,
+      "fat": 0.2,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 66,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 66
+    },
+    {
+      "id": "grapefruit",
+      "name": "Grapefruit",
+      "aliases": [
+        "grapefruit",
+        "grapefruits"
+      ],
+      "servingType": "piece",
+      "calories": 82,
+      "protein": 1.6,
+      "carbs": 20,
+      "fat": 0.3,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 230,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 230
+    },
+    {
+      "id": "apricot",
+      "name": "Apricot",
+      "aliases": [
+        "apricot",
+        "apricots"
+      ],
+      "servingType": "piece",
+      "calories": 17,
+      "protein": 0.5,
+      "carbs": 3.9,
+      "fat": 0.1,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 35,
+      "tags": [
+        "fruit",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 35
+    },
+    {
+      "id": "coconut",
+      "name": "Coconut",
+      "aliases": [
+        "coconut",
+        "coconut meat",
+        "coconuts"
+      ],
+      "servingType": "100g",
+      "calories": 354,
+      "protein": 3.3,
+      "carbs": 15,
+      "fat": 33,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 45,
+      "tags": [
+        "fruit",
+        "healthy_fat",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "avocado",
+      "name": "Avocado",
+      "aliases": [
+        "avocado",
+        "avocados"
+      ],
+      "servingType": "piece",
+      "calories": 240,
+      "protein": 3,
+      "carbs": 12,
+      "fat": 22,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 150,
+      "tags": [
+        "fruit",
+        "healthy_fat",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 150
+    },
+    {
+      "id": "broccoli",
+      "name": "Broccoli",
+      "aliases": [
+        "broccoli",
+        "brocoli",
+        "broccolis"
+      ],
+      "servingType": "100g",
+      "calories": 35,
+      "protein": 2.4,
+      "carbs": 7,
+      "fat": 0.4,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 90
+      }
+    },
+    {
+      "id": "spinach",
+      "name": "Spinach",
+      "aliases": [
+        "spinach",
+        "baby spinach",
+        "spinachs"
+      ],
+      "servingType": "100g",
+      "calories": 23,
+      "protein": 2.9,
+      "carbs": 3.6,
+      "fat": 0.4,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 80,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 30
+      }
+    },
+    {
+      "id": "kale",
+      "name": "Kale",
+      "aliases": [
+        "kale",
+        "curly kale",
+        "kales"
+      ],
+      "servingType": "100g",
+      "calories": 49,
+      "protein": 4.3,
+      "carbs": 8.8,
+      "fat": 0.9,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 80,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "lettuce",
+      "name": "Lettuce",
+      "aliases": [
+        "lettuce",
+        "romaine",
+        "lettuces"
+      ],
+      "servingType": "100g",
+      "calories": 15,
+      "protein": 1.4,
+      "carbs": 2.9,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 80,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "arugula",
+      "name": "Arugula",
+      "aliases": [
+        "arugula",
+        "rocket",
+        "arugulas"
+      ],
+      "servingType": "100g",
+      "calories": 25,
+      "protein": 2.6,
+      "carbs": 3.7,
+      "fat": 0.7,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 50,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "tomato",
+      "name": "Tomato",
+      "aliases": [
+        "tomato",
+        "tomatoes",
+        "tomatos"
+      ],
+      "servingType": "piece",
+      "calories": 22,
+      "protein": 1.1,
+      "carbs": 4.8,
+      "fat": 0.2,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 120,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 120
+    },
+    {
+      "id": "cucumber",
+      "name": "Cucumber",
+      "aliases": [
+        "cucumber",
+        "cucumbers"
+      ],
+      "servingType": "piece",
+      "calories": 16,
+      "protein": 0.7,
+      "carbs": 3.8,
+      "fat": 0.1,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 100,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 100
+    },
+    {
+      "id": "carrot",
+      "name": "Carrot",
+      "aliases": [
+        "carrot",
+        "carrots"
+      ],
+      "servingType": "piece",
+      "calories": 25,
+      "protein": 0.6,
+      "carbs": 6,
+      "fat": 0.1,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 61,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 61
+    },
+    {
+      "id": "bell-pepper",
+      "name": "Bell Pepper",
+      "aliases": [
+        "bell pepper",
+        "pepper",
+        "red pepper",
+        "bell peppers"
+      ],
+      "servingType": "piece",
+      "calories": 31,
+      "protein": 1,
+      "carbs": 7,
+      "fat": 0.3,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 120,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 120
+    },
+    {
+      "id": "onion",
+      "name": "Onion",
+      "aliases": [
+        "onion",
+        "onions"
+      ],
+      "servingType": "100g",
+      "calories": 40,
+      "protein": 1.1,
+      "carbs": 9.3,
+      "fat": 0.1,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 80,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "garlic",
+      "name": "Garlic",
+      "aliases": [
+        "garlic",
+        "garlic clove",
+        "garlics"
+      ],
+      "servingType": "piece",
+      "calories": 4,
+      "protein": 0.2,
+      "carbs": 1,
+      "fat": 0,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 3,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 3
+    },
+    {
+      "id": "mushroom",
+      "name": "Mushroom",
+      "aliases": [
+        "mushroom",
+        "mushrooms"
+      ],
+      "servingType": "100g",
+      "calories": 22,
+      "protein": 3.1,
+      "carbs": 3.3,
+      "fat": 0.3,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "zucchini",
+      "name": "Zucchini",
+      "aliases": [
+        "zucchini",
+        "courgette",
+        "zucchinis"
+      ],
+      "servingType": "100g",
+      "calories": 17,
+      "protein": 1.2,
+      "carbs": 3.1,
+      "fat": 0.3,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "eggplant",
+      "name": "Eggplant",
+      "aliases": [
+        "eggplant",
+        "aubergine",
+        "eggplants"
+      ],
+      "servingType": "100g",
+      "calories": 25,
+      "protein": 1,
+      "carbs": 6,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "cauliflower",
+      "name": "Cauliflower",
+      "aliases": [
+        "cauliflower",
+        "cauli",
+        "cauliflowers"
+      ],
+      "servingType": "100g",
+      "calories": 25,
+      "protein": 1.9,
+      "carbs": 5,
+      "fat": 0.3,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "cabbage",
+      "name": "Cabbage",
+      "aliases": [
+        "cabbage",
+        "white cabbage",
+        "cabbages"
+      ],
+      "servingType": "100g",
+      "calories": 25,
+      "protein": 1.3,
+      "carbs": 6,
+      "fat": 0.1,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "red-cabbage",
+      "name": "Red Cabbage",
+      "aliases": [
+        "red cabbage",
+        "purple cabbage",
+        "red cabbages"
+      ],
+      "servingType": "100g",
+      "calories": 31,
+      "protein": 1.4,
+      "carbs": 7,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "green-beans",
+      "name": "Green Beans",
+      "aliases": [
+        "green beans",
+        "green bean"
+      ],
+      "servingType": "100g",
+      "calories": 31,
+      "protein": 1.8,
+      "carbs": 7,
+      "fat": 0.1,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "asparagus",
+      "name": "Asparagus",
+      "aliases": [
+        "asparagus",
+        "asparagus spears"
+      ],
+      "servingType": "100g",
+      "calories": 20,
+      "protein": 2.2,
+      "carbs": 3.9,
+      "fat": 0.1,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "brussels-sprouts",
+      "name": "Brussels Sprouts",
+      "aliases": [
+        "brussels sprouts",
+        "brussel sprouts"
+      ],
+      "servingType": "100g",
+      "calories": 43,
+      "protein": 3.4,
+      "carbs": 9,
+      "fat": 0.3,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "celery",
+      "name": "Celery",
+      "aliases": [
+        "celery",
+        "celery sticks",
+        "celeries"
+      ],
+      "servingType": "100g",
+      "calories": 16,
+      "protein": 0.7,
+      "carbs": 3,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 80,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "beetroot",
+      "name": "Beetroot",
+      "aliases": [
+        "beetroot",
+        "beets",
+        "beetroots"
+      ],
+      "servingType": "100g",
+      "calories": 43,
+      "protein": 1.6,
+      "carbs": 10,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "pumpkin",
+      "name": "Pumpkin",
+      "aliases": [
+        "pumpkin",
+        "pumpkin squash",
+        "pumpkins"
+      ],
+      "servingType": "100g",
+      "calories": 26,
+      "protein": 1,
+      "carbs": 6.5,
+      "fat": 0.1,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "butternut-squash",
+      "name": "Butternut Squash",
+      "aliases": [
+        "butternut squash",
+        "squash",
+        "butternut squashs"
+      ],
+      "servingType": "100g",
+      "calories": 45,
+      "protein": 1,
+      "carbs": 12,
+      "fat": 0.1,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "radish",
+      "name": "Radish",
+      "aliases": [
+        "radish",
+        "radishes",
+        "radishs"
+      ],
+      "servingType": "100g",
+      "calories": 16,
+      "protein": 0.7,
+      "carbs": 3.4,
+      "fat": 0.1,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 50,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "parsley",
+      "name": "Parsley",
+      "aliases": [
+        "parsley",
+        "fresh parsley",
+        "parsleies"
+      ],
+      "servingType": "100g",
+      "calories": 36,
+      "protein": 3,
+      "carbs": 6,
+      "fat": 0.8,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 15,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "artichoke",
+      "name": "Artichoke",
+      "aliases": [
+        "artichoke",
+        "artichokes"
+      ],
+      "servingType": "100g",
+      "calories": 47,
+      "protein": 3.3,
+      "carbs": 11,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "okra",
+      "name": "Okra",
+      "aliases": [
+        "okra",
+        "lady finger",
+        "okras"
+      ],
+      "servingType": "100g",
+      "calories": 33,
+      "protein": 1.9,
+      "carbs": 7,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "leek",
+      "name": "Leek",
+      "aliases": [
+        "leek",
+        "leeks"
+      ],
+      "servingType": "100g",
+      "calories": 61,
+      "protein": 1.5,
+      "carbs": 14,
+      "fat": 0.3,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "mixed-salad",
+      "name": "Mixed Salad",
+      "aliases": [
+        "mixed salad",
+        "salad",
+        "green salad",
+        "mixed salads"
+      ],
+      "servingType": "bowl",
+      "calories": 45,
+      "protein": 2,
+      "carbs": 8,
+      "fat": 0.5,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 200,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 200,
+      "unitWeights": {
+        "bowl": 200
+      }
+    },
+    {
+      "id": "olives",
+      "name": "Olives",
+      "aliases": [
+        "olives",
+        "black olives",
+        "green olives"
+      ],
+      "servingType": "100g",
+      "calories": 145,
+      "protein": 1,
+      "carbs": 4,
+      "fat": 15,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 30,
+      "tags": [
+        "vegetable",
+        "healthy_fat",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "sauerkraut",
+      "name": "Sauerkraut",
+      "aliases": [
+        "sauerkraut",
+        "fermented cabbage",
+        "sauerkrauts"
+      ],
+      "servingType": "100g",
+      "calories": 19,
+      "protein": 0.9,
+      "carbs": 4.3,
+      "fat": 0.1,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 80,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "bok-choy",
+      "name": "Bok Choy",
+      "aliases": [
+        "bok choy",
+        "pak choi",
+        "bok choies"
+      ],
+      "servingType": "100g",
+      "calories": 13,
+      "protein": 1.5,
+      "carbs": 2.2,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "swiss-chard",
+      "name": "Swiss Chard",
+      "aliases": [
+        "swiss chard",
+        "chard",
+        "swiss chards"
+      ],
+      "servingType": "100g",
+      "calories": 19,
+      "protein": 1.8,
+      "carbs": 3.7,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "fennel",
+      "name": "Fennel",
+      "aliases": [
+        "fennel",
+        "fennel bulb",
+        "fennels"
+      ],
+      "servingType": "100g",
+      "calories": 31,
+      "protein": 1.2,
+      "carbs": 7.3,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "pickles",
+      "name": "Pickles",
+      "aliases": [
+        "pickles",
+        "pickle"
+      ],
+      "servingType": "100g",
+      "calories": 12,
+      "protein": 0.5,
+      "carbs": 2.4,
+      "fat": 0.2,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 60,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "seaweed",
+      "name": "Seaweed",
+      "aliases": [
+        "seaweed",
+        "nori",
+        "seaweeds"
+      ],
+      "servingType": "100g",
+      "calories": 45,
+      "protein": 5.8,
+      "carbs": 9,
+      "fat": 0.6,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 10,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "milk",
+      "name": "Milk",
+      "aliases": [
+        "milk",
+        "whole milk",
+        "milks"
+      ],
+      "servingType": "cup",
+      "calories": 149,
+      "protein": 7.7,
+      "carbs": 11.7,
+      "fat": 8,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 244,
+      "tags": [
+        "dairy",
+        "protein",
+        "whole_food"
+      ],
+      "unitGrams": 244,
+      "unitWeights": {
+        "cup": 244
+      }
+    },
+    {
+      "id": "skim-milk",
+      "name": "Skim Milk",
+      "aliases": [
+        "skim milk",
+        "fat free milk",
+        "skim milks"
+      ],
+      "servingType": "cup",
+      "calories": 83,
+      "protein": 8.3,
+      "carbs": 12.2,
+      "fat": 0.2,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 244,
+      "tags": [
+        "dairy",
+        "protein",
+        "whole_food"
+      ],
+      "unitGrams": 244,
+      "unitWeights": {
+        "cup": 244
+      }
+    },
+    {
+      "id": "almond-milk",
+      "name": "Almond Milk",
+      "aliases": [
+        "almond milk",
+        "unsweetened almond milk",
+        "almond milks"
+      ],
+      "servingType": "cup",
+      "calories": 35,
+      "protein": 1,
+      "carbs": 1,
+      "fat": 2.5,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 240,
+      "tags": [
+        "healthy_fat",
+        "processed"
+      ],
+      "unitGrams": 240,
+      "unitWeights": {
+        "cup": 240
+      }
+    },
+    {
+      "id": "soy-milk",
+      "name": "Soy Milk",
+      "aliases": [
+        "soy milk",
+        "soya milk",
+        "soy milks"
+      ],
+      "servingType": "cup",
+      "calories": 100,
+      "protein": 7,
+      "carbs": 8,
+      "fat": 4,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 240,
+      "tags": [
+        "protein",
+        "processed"
+      ],
+      "unitGrams": 240,
+      "unitWeights": {
+        "cup": 240
+      }
+    },
+    {
+      "id": "oat-milk",
+      "name": "Oat Milk",
+      "aliases": [
+        "oat milk",
+        "oat drink",
+        "oat milks"
+      ],
+      "servingType": "cup",
+      "calories": 120,
+      "protein": 3,
+      "carbs": 16,
+      "fat": 5,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 240,
+      "tags": [
+        "carb",
+        "processed"
+      ],
+      "unitGrams": 240,
+      "unitWeights": {
+        "cup": 240
+      }
+    },
+    {
+      "id": "yogurt",
+      "name": "Yogurt",
+      "aliases": [
+        "yogurt",
+        "plain yogurt",
+        "yoghurt",
+        "yogurts"
+      ],
+      "servingType": "100g",
+      "calories": 61,
+      "protein": 3.5,
+      "carbs": 4.7,
+      "fat": 3.3,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 170,
+      "tags": [
+        "dairy",
+        "protein",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "cup": 245
+      }
+    },
+    {
+      "id": "kefir",
+      "name": "Kefir",
+      "aliases": [
+        "kefir",
+        "plain kefir",
+        "kefirs"
+      ],
+      "servingType": "cup",
+      "calories": 110,
+      "protein": 9,
+      "carbs": 12,
+      "fat": 2,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 240,
+      "tags": [
+        "dairy",
+        "protein",
+        "whole_food"
+      ],
+      "unitGrams": 240,
+      "unitWeights": {
+        "cup": 240
+      }
+    },
+    {
+      "id": "ayran",
+      "name": "Ayran",
+      "aliases": [
+        "ayran",
+        "yogurt drink",
+        "ayrans"
+      ],
+      "servingType": "bottle",
+      "calories": 80,
+      "protein": 5,
+      "carbs": 6,
+      "fat": 3,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 250,
+      "tags": [
+        "dairy",
+        "protein",
+        "whole_food"
+      ],
+      "unitGrams": 250,
+      "unitWeights": {
+        "bottle": 250
+      }
+    },
+    {
+      "id": "cheese",
+      "name": "Cheese",
+      "aliases": [
+        "cheese",
+        "white cheese",
+        "cheeses"
+      ],
+      "servingType": "100g",
+      "calories": 265,
+      "protein": 18,
+      "carbs": 3,
+      "fat": 21,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 30,
+      "tags": [
+        "dairy",
+        "protein",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "slice": 25
+      }
+    },
+    {
+      "id": "cheddar-cheese",
+      "name": "Cheddar Cheese",
+      "aliases": [
+        "cheddar cheese",
+        "cheddar",
+        "cheddar cheeses"
+      ],
+      "servingType": "100g",
+      "calories": 403,
+      "protein": 25,
+      "carbs": 1.3,
+      "fat": 33,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 30,
+      "tags": [
+        "dairy",
+        "protein",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "slice": 28
+      }
+    },
+    {
+      "id": "feta-cheese",
+      "name": "Feta Cheese",
+      "aliases": [
+        "feta cheese",
+        "feta",
+        "feta cheeses"
+      ],
+      "servingType": "100g",
+      "calories": 264,
+      "protein": 14,
+      "carbs": 4,
+      "fat": 21,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 40,
+      "tags": [
+        "dairy",
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "mozzarella",
+      "name": "Mozzarella",
+      "aliases": [
+        "mozzarella",
+        "mozzarella cheese",
+        "mozzarellas"
+      ],
+      "servingType": "100g",
+      "calories": 280,
+      "protein": 18,
+      "carbs": 3,
+      "fat": 22,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 40,
+      "tags": [
+        "dairy",
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "parmesan",
+      "name": "Parmesan",
+      "aliases": [
+        "parmesan",
+        "parmesan cheese",
+        "parmesans"
+      ],
+      "servingType": "100g",
+      "calories": 431,
+      "protein": 38,
+      "carbs": 4,
+      "fat": 29,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 15,
+      "tags": [
+        "dairy",
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "ricotta",
+      "name": "Ricotta",
+      "aliases": [
+        "ricotta",
+        "ricotta cheese",
+        "ricottas"
+      ],
+      "servingType": "100g",
+      "calories": 174,
+      "protein": 11,
+      "carbs": 3,
+      "fat": 13,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 60,
+      "tags": [
+        "dairy",
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "cream-cheese",
+      "name": "Cream Cheese",
+      "aliases": [
+        "cream cheese",
+        "cream cheese spread",
+        "cream cheeses"
+      ],
+      "servingType": "100g",
+      "calories": 342,
+      "protein": 6,
+      "carbs": 4,
+      "fat": 34,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 30,
+      "tags": [
+        "dairy",
+        "processed"
+      ],
+      "unitWeights": {
+        "tablespoon": 15
+      }
+    },
+    {
+      "id": "labneh",
+      "name": "Labneh",
+      "aliases": [
+        "labneh",
+        "labne",
+        "labnehs"
+      ],
+      "servingType": "100g",
+      "calories": 165,
+      "protein": 9,
+      "carbs": 6,
+      "fat": 11,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 60,
+      "tags": [
+        "dairy",
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "butter",
+      "name": "Butter",
+      "aliases": [
+        "butter",
+        "butter pat",
+        "butters"
+      ],
+      "servingType": "tablespoon",
+      "calories": 102,
+      "protein": 0.1,
+      "carbs": 0,
+      "fat": 11.5,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 14,
+      "tags": [
+        "dairy",
+        "healthy_fat"
+      ],
+      "unitGrams": 14,
+      "unitWeights": {
+        "tablespoon": 14,
+        "teaspoon": 5
+      }
+    },
+    {
+      "id": "chocolate-milk",
+      "name": "Chocolate Milk",
+      "aliases": [
+        "chocolate milk",
+        "cocoa milk",
+        "chocolate milks"
+      ],
+      "servingType": "cup",
+      "calories": 208,
+      "protein": 8,
+      "carbs": 26,
+      "fat": 8,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 240,
+      "tags": [
+        "dairy",
+        "added_sugar",
+        "processed"
+      ],
+      "unitGrams": 240,
+      "unitWeights": {
+        "cup": 240
+      }
+    },
+    {
+      "id": "ice-cream",
+      "name": "Ice Cream",
+      "aliases": [
+        "ice cream",
+        "vanilla ice cream",
+        "ice creams"
+      ],
+      "servingType": "100g",
+      "calories": 207,
+      "protein": 3.5,
+      "carbs": 24,
+      "fat": 11,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "processed",
+        "added_sugar"
+      ],
+      "unitWeights": {
+        "cup": 135
+      }
+    },
+    {
+      "id": "olive-oil",
+      "name": "Olive Oil",
+      "aliases": [
+        "olive oil",
+        "oil",
+        "extra virgin olive oil",
+        "olive oils"
+      ],
+      "servingType": "tablespoon",
+      "calories": 119,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 13.5,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 14,
+      "tags": [
+        "healthy_fat",
+        "whole_food"
+      ],
+      "unitGrams": 14,
+      "unitWeights": {
+        "tablespoon": 14,
+        "teaspoon": 5
+      }
+    },
+    {
+      "id": "avocado-oil",
+      "name": "Avocado Oil",
+      "aliases": [
+        "avocado oil",
+        "avocado oils"
+      ],
+      "servingType": "tablespoon",
+      "calories": 124,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 14,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 14,
+      "tags": [
+        "healthy_fat",
+        "whole_food"
+      ],
+      "unitGrams": 14,
+      "unitWeights": {
+        "tablespoon": 14
+      }
+    },
+    {
+      "id": "coconut-oil",
+      "name": "Coconut Oil",
+      "aliases": [
+        "coconut oil",
+        "coconut oils"
+      ],
+      "servingType": "tablespoon",
+      "calories": 121,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 13.5,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 14,
+      "tags": [
+        "healthy_fat",
+        "processed"
+      ],
+      "unitGrams": 14,
+      "unitWeights": {
+        "tablespoon": 14
+      }
+    },
+    {
+      "id": "peanut-butter",
+      "name": "Peanut Butter",
+      "aliases": [
+        "peanut butter",
+        "peanut spread",
+        "peanut butters"
+      ],
+      "servingType": "tablespoon",
+      "calories": 94,
+      "protein": 3.5,
+      "carbs": 3.2,
+      "fat": 8,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 16,
+      "tags": [
+        "protein",
+        "healthy_fat",
+        "whole_food"
+      ],
+      "unitGrams": 16,
+      "unitWeights": {
+        "tablespoon": 16
+      }
+    },
+    {
+      "id": "almond-butter",
+      "name": "Almond Butter",
+      "aliases": [
+        "almond butter",
+        "almond spread",
+        "almond butters"
+      ],
+      "servingType": "tablespoon",
+      "calories": 98,
+      "protein": 3.4,
+      "carbs": 3,
+      "fat": 9,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 16,
+      "tags": [
+        "protein",
+        "healthy_fat",
+        "whole_food"
+      ],
+      "unitGrams": 16,
+      "unitWeights": {
+        "tablespoon": 16
+      }
+    },
+    {
+      "id": "tahini",
+      "name": "Tahini",
+      "aliases": [
+        "tahini",
+        "sesame paste",
+        "tahinis"
+      ],
+      "servingType": "tablespoon",
+      "calories": 89,
+      "protein": 2.6,
+      "carbs": 3.2,
+      "fat": 8,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 15,
+      "tags": [
+        "protein",
+        "healthy_fat",
+        "whole_food"
+      ],
+      "unitGrams": 15,
+      "unitWeights": {
+        "tablespoon": 15
+      }
+    },
+    {
+      "id": "almonds",
+      "name": "Almonds",
+      "aliases": [
+        "almonds",
+        "almond"
+      ],
+      "servingType": "100g",
+      "calories": 579,
+      "protein": 21,
+      "carbs": 22,
+      "fat": 50,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 30,
+      "tags": [
+        "protein",
+        "healthy_fat",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "walnuts",
+      "name": "Walnuts",
+      "aliases": [
+        "walnuts",
+        "walnut"
+      ],
+      "servingType": "100g",
+      "calories": 654,
+      "protein": 15,
+      "carbs": 14,
+      "fat": 65,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 30,
+      "tags": [
+        "healthy_fat",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "cashews",
+      "name": "Cashews",
+      "aliases": [
+        "cashews",
+        "cashew"
+      ],
+      "servingType": "100g",
+      "calories": 553,
+      "protein": 18,
+      "carbs": 30,
+      "fat": 44,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 30,
+      "tags": [
+        "protein",
+        "healthy_fat",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "pistachios",
+      "name": "Pistachios",
+      "aliases": [
+        "pistachios",
+        "pistachio"
+      ],
+      "servingType": "100g",
+      "calories": 560,
+      "protein": 20,
+      "carbs": 28,
+      "fat": 45,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 30,
+      "tags": [
+        "protein",
+        "healthy_fat",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "hazelnuts",
+      "name": "Hazelnuts",
+      "aliases": [
+        "hazelnuts",
+        "hazelnut"
+      ],
+      "servingType": "100g",
+      "calories": 628,
+      "protein": 15,
+      "carbs": 17,
+      "fat": 61,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 30,
+      "tags": [
+        "healthy_fat",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "peanuts",
+      "name": "Peanuts",
+      "aliases": [
+        "peanuts",
+        "peanut"
+      ],
+      "servingType": "100g",
+      "calories": 567,
+      "protein": 26,
+      "carbs": 16,
+      "fat": 49,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 30,
+      "tags": [
+        "protein",
+        "healthy_fat",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "mixed-nuts",
+      "name": "Mixed Nuts",
+      "aliases": [
+        "mixed nuts",
+        "nuts"
+      ],
+      "servingType": "100g",
+      "calories": 607,
+      "protein": 20,
+      "carbs": 21,
+      "fat": 54,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 30,
+      "tags": [
+        "protein",
+        "healthy_fat",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "chia-seeds",
+      "name": "Chia Seeds",
+      "aliases": [
+        "chia seeds",
+        "chia"
+      ],
+      "servingType": "100g",
+      "calories": 486,
+      "protein": 17,
+      "carbs": 42,
+      "fat": 31,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 15,
+      "tags": [
+        "protein",
+        "healthy_fat",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "tablespoon": 12
+      }
+    },
+    {
+      "id": "flaxseeds",
+      "name": "Flaxseeds",
+      "aliases": [
+        "flaxseeds",
+        "flax seeds"
+      ],
+      "servingType": "100g",
+      "calories": 534,
+      "protein": 18,
+      "carbs": 29,
+      "fat": 42,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 15,
+      "tags": [
+        "protein",
+        "healthy_fat",
+        "fiber",
+        "whole_food"
+      ],
+      "unitWeights": {
+        "tablespoon": 10
+      }
+    },
+    {
+      "id": "pumpkin-seeds",
+      "name": "Pumpkin Seeds",
+      "aliases": [
+        "pumpkin seeds",
+        "pepitas"
+      ],
+      "servingType": "100g",
+      "calories": 559,
+      "protein": 30,
+      "carbs": 11,
+      "fat": 49,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 25,
+      "tags": [
+        "protein",
+        "healthy_fat",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "sunflower-seeds",
+      "name": "Sunflower Seeds",
+      "aliases": [
+        "sunflower seeds",
+        "sunflower seed"
+      ],
+      "servingType": "100g",
+      "calories": 584,
+      "protein": 21,
+      "carbs": 20,
+      "fat": 51,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 25,
+      "tags": [
+        "protein",
+        "healthy_fat",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "sesame-seeds",
+      "name": "Sesame Seeds",
+      "aliases": [
+        "sesame seeds",
+        "sesame"
+      ],
+      "servingType": "100g",
+      "calories": 573,
+      "protein": 18,
+      "carbs": 23,
+      "fat": 50,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 15,
+      "tags": [
+        "protein",
+        "healthy_fat",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "guacamole",
+      "name": "Guacamole",
+      "aliases": [
+        "guacamole",
+        "avocado dip",
+        "guacamoles"
+      ],
+      "servingType": "100g",
+      "calories": 150,
+      "protein": 2,
+      "carbs": 9,
+      "fat": 13,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 60,
+      "tags": [
+        "healthy_fat",
+        "fiber",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "pesto",
+      "name": "Pesto",
+      "aliases": [
+        "pesto",
+        "basil pesto",
+        "pestos"
+      ],
+      "servingType": "100g",
+      "calories": 418,
+      "protein": 5,
+      "carbs": 6,
+      "fat": 42,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 30,
+      "tags": [
+        "healthy_fat",
+        "processed"
+      ]
+    },
+    {
+      "id": "mayonnaise",
+      "name": "Mayonnaise",
+      "aliases": [
+        "mayonnaise",
+        "mayo",
+        "mayonnaises"
+      ],
+      "servingType": "tablespoon",
+      "calories": 94,
+      "protein": 0.1,
+      "carbs": 0.1,
+      "fat": 10,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 14,
+      "tags": [
+        "processed",
+        "healthy_fat"
+      ],
+      "unitGrams": 14,
+      "unitWeights": {
+        "tablespoon": 14
+      }
+    },
+    {
+      "id": "dark-chocolate",
+      "name": "Dark Chocolate",
+      "aliases": [
+        "dark chocolate",
+        "dark chocolate square",
+        "dark chocolates"
+      ],
+      "servingType": "100g",
+      "calories": 546,
+      "protein": 4.9,
+      "carbs": 61,
+      "fat": 31,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 25,
+      "tags": [
+        "healthy_fat",
+        "added_sugar",
+        "processed"
+      ]
+    },
+    {
+      "id": "protein-bar",
+      "name": "Protein Bar",
+      "aliases": [
+        "protein bar",
+        "protein bars"
+      ],
+      "servingType": "piece",
+      "calories": 220,
+      "protein": 20,
+      "carbs": 22,
+      "fat": 7,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 60,
+      "tags": [
+        "protein",
+        "processed",
+        "added_sugar"
+      ],
+      "unitGrams": 60
+    },
+    {
+      "id": "granola-bar",
+      "name": "Granola Bar",
+      "aliases": [
+        "granola bar",
+        "cereal bar",
+        "granola bars"
+      ],
+      "servingType": "piece",
+      "calories": 140,
+      "protein": 3,
+      "carbs": 24,
+      "fat": 4,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 35,
+      "tags": [
+        "processed",
+        "added_sugar"
+      ],
+      "unitGrams": 35
+    },
+    {
+      "id": "chocolate-bar",
+      "name": "Chocolate Bar",
+      "aliases": [
+        "chocolate bar",
+        "chocolate",
+        "chocolate bars"
+      ],
+      "servingType": "piece",
+      "calories": 230,
+      "protein": 3,
+      "carbs": 26,
+      "fat": 13,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 45,
+      "tags": [
+        "processed",
+        "added_sugar"
+      ],
+      "unitGrams": 45
+    },
+    {
+      "id": "cookie",
+      "name": "Cookie",
+      "aliases": [
+        "cookie",
+        "cookies"
+      ],
+      "servingType": "piece",
+      "calories": 80,
+      "protein": 1,
+      "carbs": 11,
+      "fat": 4,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 18,
+      "tags": [
+        "processed",
+        "added_sugar"
+      ],
+      "unitGrams": 18
+    },
+    {
+      "id": "cake",
+      "name": "Cake",
+      "aliases": [
+        "cake",
+        "cake slice",
+        "cakes"
+      ],
+      "servingType": "slice",
+      "calories": 350,
+      "protein": 5,
+      "carbs": 50,
+      "fat": 15,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 100,
+      "tags": [
+        "processed",
+        "added_sugar"
+      ],
+      "unitGrams": 100,
+      "unitWeights": {
+        "slice": 100
+      }
+    },
+    {
+      "id": "muffin",
+      "name": "Muffin",
+      "aliases": [
+        "muffin",
+        "muffins"
+      ],
+      "servingType": "piece",
+      "calories": 340,
+      "protein": 6,
+      "carbs": 52,
+      "fat": 12,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 110,
+      "tags": [
+        "processed",
+        "added_sugar"
+      ],
+      "unitGrams": 110
+    },
+    {
+      "id": "donut",
+      "name": "Donut",
+      "aliases": [
+        "donut",
+        "doughnut",
+        "donuts"
+      ],
+      "servingType": "piece",
+      "calories": 260,
+      "protein": 3,
+      "carbs": 31,
+      "fat": 14,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 70,
+      "tags": [
+        "processed",
+        "added_sugar"
+      ],
+      "unitGrams": 70
+    },
+    {
+      "id": "chips",
+      "name": "Chips",
+      "aliases": [
+        "chips",
+        "potato chips",
+        "crisps"
+      ],
+      "servingType": "100g",
+      "calories": 536,
+      "protein": 7,
+      "carbs": 53,
+      "fat": 35,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 40,
+      "tags": [
+        "processed"
+      ]
+    },
+    {
+      "id": "french-fries",
+      "name": "French Fries",
+      "aliases": [
+        "french fries",
+        "fries"
+      ],
+      "servingType": "100g",
+      "calories": 312,
+      "protein": 3.4,
+      "carbs": 41,
+      "fat": 15,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 120,
+      "tags": [
+        "processed"
+      ]
+    },
+    {
+      "id": "pizza",
+      "name": "Pizza",
+      "aliases": [
+        "pizza",
+        "pizza slice",
+        "pizzas"
+      ],
+      "servingType": "slice",
+      "calories": 285,
+      "protein": 12,
+      "carbs": 36,
+      "fat": 10,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 107,
+      "tags": [
+        "protein",
+        "carb",
+        "processed"
+      ],
+      "unitGrams": 107,
+      "unitWeights": {
+        "slice": 107
+      }
+    },
+    {
+      "id": "hamburger",
+      "name": "Hamburger",
+      "aliases": [
+        "hamburger",
+        "burger",
+        "hamburgers"
+      ],
+      "servingType": "piece",
+      "calories": 354,
+      "protein": 17,
+      "carbs": 29,
+      "fat": 19,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 150,
+      "tags": [
+        "protein",
+        "carb",
+        "processed"
+      ],
+      "unitGrams": 150
+    },
+    {
+      "id": "cheeseburger",
+      "name": "Cheeseburger",
+      "aliases": [
+        "cheeseburger",
+        "cheese burger",
+        "cheeseburgers"
+      ],
+      "servingType": "piece",
+      "calories": 420,
+      "protein": 22,
+      "carbs": 31,
+      "fat": 24,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 170,
+      "tags": [
+        "protein",
+        "carb",
+        "processed"
+      ],
+      "unitGrams": 170
+    },
+    {
+      "id": "hot-dog",
+      "name": "Hot Dog",
+      "aliases": [
+        "hot dog",
+        "hotdog",
+        "hot dogs"
+      ],
+      "servingType": "piece",
+      "calories": 290,
+      "protein": 10,
+      "carbs": 24,
+      "fat": 17,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 100,
+      "tags": [
+        "protein",
+        "carb",
+        "processed"
+      ],
+      "unitGrams": 100
+    },
+    {
+      "id": "chicken-nuggets",
+      "name": "Chicken Nuggets",
+      "aliases": [
+        "chicken nuggets",
+        "nuggets"
+      ],
+      "servingType": "100g",
+      "calories": 296,
+      "protein": 15,
+      "carbs": 18,
+      "fat": 19,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 100,
+      "tags": [
+        "protein",
+        "processed"
+      ]
+    },
+    {
+      "id": "borek",
+      "name": "Borek",
+      "aliases": [
+        "borek",
+        "börek",
+        "cheese pastry",
+        "boreks"
+      ],
+      "servingType": "piece",
+      "calories": 330,
+      "protein": 9,
+      "carbs": 34,
+      "fat": 18,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 120,
+      "tags": [
+        "carb",
+        "processed"
+      ],
+      "unitGrams": 120
+    },
+    {
+      "id": "lahmacun",
+      "name": "Lahmacun",
+      "aliases": [
+        "lahmacun",
+        "turkish pizza",
+        "lahmacuns"
+      ],
+      "servingType": "piece",
+      "calories": 300,
+      "protein": 15,
+      "carbs": 38,
+      "fat": 10,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 130,
+      "tags": [
+        "protein",
+        "carb",
+        "processed"
+      ],
+      "unitGrams": 130
+    },
+    {
+      "id": "kebab",
+      "name": "Kebab",
+      "aliases": [
+        "kebab",
+        "doner",
+        "döner",
+        "kebabs"
+      ],
+      "servingType": "100g",
+      "calories": 250,
+      "protein": 20,
+      "carbs": 2,
+      "fat": 18,
+      "unitBasis": "per_100g",
+      "defaultServingGrams": 150,
+      "tags": [
+        "protein",
+        "whole_food"
+      ]
+    },
+    {
+      "id": "soda",
+      "name": "Soda",
+      "aliases": [
+        "soda",
+        "cola",
+        "soft drink",
+        "sodas"
+      ],
+      "servingType": "bottle",
+      "calories": 210,
+      "protein": 0,
+      "carbs": 54,
+      "fat": 0,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 500,
+      "tags": [
+        "processed",
+        "added_sugar"
+      ],
+      "unitGrams": 500,
+      "unitWeights": {
+        "bottle": 500
+      }
+    },
+    {
+      "id": "orange-juice",
+      "name": "Orange Juice",
+      "aliases": [
+        "orange juice",
+        "oj",
+        "orange juices"
+      ],
+      "servingType": "cup",
+      "calories": 112,
+      "protein": 1.7,
+      "carbs": 26,
+      "fat": 0.5,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 240,
+      "tags": [
+        "fruit",
+        "added_sugar"
+      ],
+      "unitGrams": 240,
+      "unitWeights": {
+        "cup": 240
+      }
+    },
+    {
+      "id": "apple-juice",
+      "name": "Apple Juice",
+      "aliases": [
+        "apple juice",
+        "apple drink",
+        "apple juices"
+      ],
+      "servingType": "cup",
+      "calories": 114,
+      "protein": 0.2,
+      "carbs": 28,
+      "fat": 0.3,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 240,
+      "tags": [
+        "fruit",
+        "added_sugar"
+      ],
+      "unitGrams": 240,
+      "unitWeights": {
+        "cup": 240
+      }
+    },
+    {
+      "id": "sports-drink",
+      "name": "Sports Drink",
+      "aliases": [
+        "sports drink",
+        "isotonic drink",
+        "sports drinks"
+      ],
+      "servingType": "bottle",
+      "calories": 130,
+      "protein": 0,
+      "carbs": 34,
+      "fat": 0,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 500,
+      "tags": [
+        "processed",
+        "added_sugar"
+      ],
+      "unitGrams": 500,
+      "unitWeights": {
+        "bottle": 500
+      }
+    },
+    {
+      "id": "beer",
+      "name": "Beer",
+      "aliases": [
+        "beer",
+        "lager",
+        "beers"
+      ],
+      "servingType": "bottle",
+      "calories": 153,
+      "protein": 1.6,
+      "carbs": 13,
+      "fat": 0,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 355,
+      "tags": [
+        "processed"
+      ],
+      "unitGrams": 355,
+      "unitWeights": {
+        "bottle": 355
+      }
+    },
+    {
+      "id": "wine",
+      "name": "Wine",
+      "aliases": [
+        "wine",
+        "red wine",
+        "white wine",
+        "wines"
+      ],
+      "servingType": "cup",
+      "calories": 125,
+      "protein": 0.1,
+      "carbs": 4,
+      "fat": 0,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 150,
+      "tags": [
+        "processed"
+      ],
+      "unitGrams": 150,
+      "unitWeights": {
+        "cup": 150
+      }
+    },
+    {
+      "id": "coffee",
+      "name": "Coffee",
+      "aliases": [
+        "coffee",
+        "black coffee",
+        "coffees"
+      ],
+      "servingType": "cup",
+      "calories": 2,
+      "protein": 0.3,
+      "carbs": 0,
+      "fat": 0,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 240,
+      "tags": [],
+      "unitGrams": 240,
+      "unitWeights": {
+        "cup": 240
+      }
+    },
+    {
+      "id": "latte",
+      "name": "Latte",
+      "aliases": [
+        "latte",
+        "cafe latte",
+        "lattes"
+      ],
+      "servingType": "cup",
+      "calories": 150,
+      "protein": 8,
+      "carbs": 13,
+      "fat": 7,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 350,
+      "tags": [
+        "dairy",
+        "protein",
+        "whole_food"
+      ],
+      "unitGrams": 350,
+      "unitWeights": {
+        "cup": 350
+      }
+    },
+    {
+      "id": "tea",
+      "name": "Tea",
+      "aliases": [
+        "tea",
+        "black tea",
+        "teas"
+      ],
+      "servingType": "cup",
+      "calories": 2,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 240,
+      "tags": [],
+      "unitGrams": 240,
+      "unitWeights": {
+        "cup": 240
+      }
+    },
+    {
+      "id": "smoothie",
+      "name": "Smoothie",
+      "aliases": [
+        "smoothie",
+        "fruit smoothie",
+        "smoothies"
+      ],
+      "servingType": "bottle",
+      "calories": 250,
+      "protein": 5,
+      "carbs": 50,
+      "fat": 3,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 350,
+      "tags": [
+        "fruit",
+        "added_sugar"
+      ],
+      "unitGrams": 350,
+      "unitWeights": {
+        "bottle": 350
+      }
+    },
+    {
+      "id": "vegetable-soup",
+      "name": "Vegetable Soup",
+      "aliases": [
+        "vegetable soup",
+        "veggie soup",
+        "vegetable soups"
+      ],
+      "servingType": "bowl",
+      "calories": 120,
+      "protein": 5,
+      "carbs": 20,
+      "fat": 3,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 300,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 300,
+      "unitWeights": {
+        "bowl": 300
+      }
+    },
+    {
+      "id": "lentil-soup",
+      "name": "Lentil Soup",
+      "aliases": [
+        "lentil soup",
+        "mercimek soup",
+        "lentil soups"
+      ],
+      "servingType": "bowl",
+      "calories": 230,
+      "protein": 14,
+      "carbs": 35,
+      "fat": 4,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 320,
+      "tags": [
+        "protein",
+        "carb",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 320,
+      "unitWeights": {
+        "bowl": 320
+      }
+    },
+    {
+      "id": "chicken-soup",
+      "name": "Chicken Soup",
+      "aliases": [
+        "chicken soup",
+        "chicken broth soup",
+        "chicken soups"
+      ],
+      "servingType": "bowl",
+      "calories": 180,
+      "protein": 18,
+      "carbs": 12,
+      "fat": 6,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 320,
+      "tags": [
+        "protein",
+        "whole_food"
+      ],
+      "unitGrams": 320,
+      "unitWeights": {
+        "bowl": 320
+      }
+    },
+    {
+      "id": "tomato-soup",
+      "name": "Tomato Soup",
+      "aliases": [
+        "tomato soup",
+        "tomato soups"
+      ],
+      "servingType": "bowl",
+      "calories": 150,
+      "protein": 4,
+      "carbs": 24,
+      "fat": 4,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 300,
+      "tags": [
+        "vegetable",
+        "fiber",
+        "whole_food"
+      ],
+      "unitGrams": 300,
+      "unitWeights": {
+        "bowl": 300
+      }
+    },
+    {
+      "id": "honey",
+      "name": "Honey",
+      "aliases": [
+        "honey",
+        "bal",
+        "honeies"
+      ],
+      "servingType": "tablespoon",
+      "calories": 64,
+      "protein": 0,
+      "carbs": 17,
+      "fat": 0,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 21,
+      "tags": [
+        "added_sugar",
+        "whole_food"
+      ],
+      "unitGrams": 21,
+      "unitWeights": {
+        "tablespoon": 21,
+        "teaspoon": 7
+      }
+    },
+    {
+      "id": "jam",
+      "name": "Jam",
+      "aliases": [
+        "jam",
+        "fruit jam",
+        "jams"
+      ],
+      "servingType": "tablespoon",
+      "calories": 56,
+      "protein": 0,
+      "carbs": 14,
+      "fat": 0,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 20,
+      "tags": [
+        "processed",
+        "added_sugar"
+      ],
+      "unitGrams": 20,
+      "unitWeights": {
+        "tablespoon": 20
+      }
+    },
+    {
+      "id": "sugar",
+      "name": "Sugar",
+      "aliases": [
+        "sugar",
+        "white sugar",
+        "sugars"
+      ],
+      "servingType": "teaspoon",
+      "calories": 16,
+      "protein": 0,
+      "carbs": 4,
+      "fat": 0,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 4,
+      "tags": [
+        "added_sugar",
+        "processed"
+      ],
+      "unitGrams": 4,
+      "unitWeights": {
+        "teaspoon": 4,
+        "tablespoon": 12
+      }
+    },
+    {
+      "id": "ketchup",
+      "name": "Ketchup",
+      "aliases": [
+        "ketchup",
+        "tomato ketchup",
+        "ketchups"
+      ],
+      "servingType": "tablespoon",
+      "calories": 17,
+      "protein": 0.2,
+      "carbs": 4.5,
+      "fat": 0,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 17,
+      "tags": [
+        "processed",
+        "added_sugar"
+      ],
+      "unitGrams": 17,
+      "unitWeights": {
+        "tablespoon": 17
+      }
+    },
+    {
+      "id": "salad-dressing",
+      "name": "Salad Dressing",
+      "aliases": [
+        "salad dressing",
+        "dressing",
+        "salad dressings"
+      ],
+      "servingType": "tablespoon",
+      "calories": 73,
+      "protein": 0.2,
+      "carbs": 2,
+      "fat": 7.5,
+      "unitBasis": "per_unit",
+      "defaultServingGrams": 15,
+      "tags": [
+        "processed",
+        "healthy_fat"
+      ],
+      "unitGrams": 15,
+      "unitWeights": {
+        "tablespoon": 15
+      }
+    }
+  ]
+}

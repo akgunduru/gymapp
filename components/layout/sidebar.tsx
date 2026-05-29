@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  Activity,
   Apple,
   Dumbbell,
   LayoutDashboard,
@@ -26,7 +25,6 @@ const navIcons = {
   "/workouts": Dumbbell,
   "/nutrition": Apple,
   "/professionals": Stethoscope,
-  "/consultations": Activity,
   "/messages": MessageCircle,
   "/admin": ShieldCheck,
 } as const;

@@ -61,7 +61,6 @@ export const NAV_ITEMS = [
   { href: "/workouts", label: "Workouts" },
   { href: "/nutrition", label: "Nutrition" },
   { href: "/professionals", label: "Professionals" },
-  { href: "/consultations", label: "Consultations" },
   { href: "/messages", label: "Messages" },
   { href: "/admin", label: "Admin" },
 ] as const;

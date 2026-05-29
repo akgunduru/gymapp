@@ -1,118 +1,150 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ArrowRight, LockKeyhole, Mail } from "lucide-react";
+import { ArrowRight, Dumbbell, LockKeyhole, Mail } from "lucide-react";
 import { loginAction } from "@/lib/auth-actions";
 import { getCurrentUser } from "@/lib/auth";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type LoginPageProps = {
-  searchParams?: Promise<{
-    error?: string;
-  }>;
+  searchParams?: Promise<{ error?: string }>;
 };
 
 export default async function LoginPage({ searchParams }: LoginPageProps) {
   const user = await getCurrentUser();
-
-  if (user) {
-    redirect("/dashboard");
-  }
+  if (user) redirect("/dashboard");
 
   const params = await searchParams;
 
   return (
-    <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-[1fr_420px] lg:items-stretch">
-      <section className="hidden rounded-lg bg-slate-950 p-8 text-white lg:flex lg:flex-col lg:justify-between">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-wide text-emerald-300">
-            Social Gym System
-          </p>
-          <h1 className="mt-4 text-4xl font-bold tracking-normal">Welcome back</h1>
-          <p className="mt-4 max-w-md text-sm leading-6 text-slate-300">
-            Continue with seeded demo data, protected routes, and the profile module.
-          </p>
-        </div>
-        <div className="grid gap-3 text-sm">
-          <div className="rounded-md border border-white/10 bg-white/5 px-4 py-3">
-            Admin: admin@socialgym.test
-          </div>
-          <div className="rounded-md border border-white/10 bg-white/5 px-4 py-3">
-            User: ece.user@socialgym.test
-          </div>
-          <div className="rounded-md border border-white/10 bg-white/5 px-4 py-3">
-            Password: DemoPass123!
-          </div>
-        </div>
-      </section>
+    /* ── Full-page hero background ─────────────────────────── */
+    <div className="relative flex min-h-[calc(100vh-88px)] items-center justify-center overflow-hidden rounded-2xl">
 
-      <Card>
-        <CardHeader>
-          <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-md bg-emerald-50 text-emerald-800">
-            <LockKeyhole className="h-5 w-5" />
+      {/* Gym background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80')",
+        }}
+      />
+
+      {/* Dark gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950/85 via-emerald-950/70 to-slate-900/85" />
+
+      {/* Floating blobs */}
+      <div
+        className="absolute -top-32 -left-32 h-96 w-96 rounded-full opacity-20 blur-3xl"
+        style={{
+          background: "radial-gradient(circle, #10b981, transparent)",
+          animation: "blob 8s ease-in-out infinite",
+        }}
+      />
+      <div
+        className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full opacity-15 blur-3xl"
+        style={{
+          background: "radial-gradient(circle, #06b6d4, transparent)",
+          animation: "blob 10s ease-in-out infinite reverse",
+        }}
+      />
+
+      {/* ── Card ──────────────────────────────────────────────── */}
+      <div className="relative z-10 w-full max-w-sm px-4">
+
+        {/* Brand */}
+        <div className="mb-8 text-center">
+          <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-cyan-500 shadow-2xl shadow-emerald-500/40">
+            <Dumbbell className="h-7 w-7 text-white" />
           </div>
-          <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">
-            Authentication
+          <h1 className="text-3xl font-black tracking-tight text-white">
+            Welcome back
+          </h1>
+          <p className="mt-1 text-sm font-medium text-slate-400">
+            Sign in to your SocialGym account
           </p>
-          <CardTitle className="text-3xl">Login</CardTitle>
-        </CardHeader>
-        <CardContent>
+        </div>
+
+        {/* Glass form card */}
+        <div className="rounded-2xl border border-white/15 bg-white/8 p-7 shadow-2xl backdrop-blur-xl">
           <form action={loginAction} className="space-y-4">
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium text-slate-700">
+            {/* Email */}
+            <div className="space-y-1.5">
+              <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wide text-slate-300">
                 Email
               </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="h-11 w-full rounded-md border border-slate-300 bg-white px-3 text-sm outline-none ring-0 transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100"
-                placeholder="admin@socialgym.test"
-              />
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  defaultValue="admin@socialgym.test"
+                  className="h-11 w-full rounded-xl border border-white/10 bg-white/6 pl-9 pr-3 text-sm text-white placeholder-slate-500 outline-none transition focus:border-emerald-500/60 focus:bg-white/10 focus:ring-2 focus:ring-emerald-500/20"
+                  placeholder="you@example.com"
+                />
+              </div>
             </div>
-            <div className="space-y-2">
-              <label htmlFor="password" className="text-sm font-medium text-slate-700">
+
+            {/* Password */}
+            <div className="space-y-1.5">
+              <label htmlFor="password" className="block text-xs font-bold uppercase tracking-wide text-slate-300">
                 Password
               </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className="h-11 w-full rounded-md border border-slate-300 bg-white px-3 text-sm outline-none ring-0 transition focus:border-emerald-600 focus:ring-2 focus:ring-emerald-100"
-                placeholder="DemoPass123!"
-              />
+              <div className="relative">
+                <LockKeyhole className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  defaultValue="DemoPass123!"
+                  className="h-11 w-full rounded-xl border border-white/10 bg-white/6 pl-9 pr-3 text-sm text-white placeholder-slate-500 outline-none transition focus:border-emerald-500/60 focus:bg-white/10 focus:ring-2 focus:ring-emerald-500/20"
+                  placeholder="••••••••"
+                />
+              </div>
             </div>
 
-            {params?.error ? (
-              <p className="rounded-md border border-orange-200 bg-orange-50 px-3 py-2 text-sm text-orange-800">
+            {/* Error */}
+            {params?.error && (
+              <p className="rounded-xl border border-orange-500/20 bg-orange-500/10 px-3 py-2 text-sm text-orange-300">
                 {params.error}
               </p>
-            ) : null}
+            )}
 
-            <Button type="submit" className="w-full">
-              <Mail className="h-4 w-4" />
-              Login
-            </Button>
+            {/* Submit */}
+            <button
+              type="submit"
+              className="mt-1 h-11 w-full rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-sm font-black text-white shadow-lg shadow-emerald-500/30 transition hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]"
+            >
+              Sign In
+            </button>
           </form>
 
-          <div className="mt-5 rounded-md border border-slate-200 bg-slate-50 p-3 text-sm text-slate-600 lg:hidden">
-            <p className="font-medium text-slate-800">Demo account</p>
-            <p className="mt-1">admin@socialgym.test</p>
-            <p>DemoPass123!</p>
+          {/* Demo credentials hint */}
+          <div className="mt-5 rounded-xl border border-white/8 bg-white/4 p-3">
+            <p className="mb-1.5 text-[10px] font-black uppercase tracking-wider text-slate-500">
+              Demo accounts
+            </p>
+            <div className="space-y-1 text-xs text-slate-400 font-mono">
+              <p>admin@socialgym.test</p>
+              <p>ece.user@socialgym.test</p>
+              <p className="text-emerald-400 font-semibold">Password: DemoPass123!</p>
+            </div>
           </div>
 
-          <p className="mt-5 text-center text-sm text-slate-600">
+          {/* Register link */}
+          <p className="mt-5 text-center text-sm text-slate-500">
             No account yet?{" "}
-            <Link href="/register" className="font-medium text-emerald-700 hover:text-emerald-800">
+            <Link
+              href="/register"
+              className="font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
+            >
               Register <ArrowRight className="inline h-3.5 w-3.5" />
             </Link>
           </p>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

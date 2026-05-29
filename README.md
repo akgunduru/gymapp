@@ -68,6 +68,22 @@ The application will be available at `http://localhost:3000`.
 If the in-app browser has trouble with `127.0.0.1`, open `http://localhost:3000` instead.
 The dev script clears `.next` before starting so stale build assets do not break CSS during local development.
 
+## Workout ML Workflow
+
+The workout recommendation ML scripts live in `ml/` and are separate from the Next.js frontend, Prisma, auth, and database code.
+
+Install ML dependencies, train the model, and run a terminal prediction:
+
+```bash
+python3 -m venv .venv-ml
+source .venv-ml/bin/activate
+pip install -r ml/requirements.txt
+python ml/train_workout_model.py
+python ml/predict_workout.py --level Intermediate --goal "Muscle Gain" --equipment "Full Gym" --duration 60
+```
+
+See `ml/README.md` for the full presentation-friendly workflow.
+
 ## Database Setup
 
 The application uses PostgreSQL with Prisma ORM. Make sure PostgreSQL is running and create a database named `social_gym_system`, or update `DATABASE_URL` in `.env` to match your local database.
