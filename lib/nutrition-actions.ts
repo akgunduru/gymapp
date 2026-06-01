@@ -107,3 +107,72 @@ export async function saveAnalyzedMealAction(
     return { success: false, error: "Meal could not be saved. Please try again." };
   }
 }
+
+// ── Delete a single meal entry ────────────────────────────────────────────────
+
+export type DeleteMealResult = {
+  success: boolean;
+  error?: string;
+};
+
+export async function deleteMealEntryAction(
+  mealEntryId: string,
+): Promise<DeleteMealResult> {
+  const user = await requireUser();
+
+  if (!mealEntryId) {
+    return { success: false, error: "Invalid meal ID." };
+  }
+
+  try {
+    const entry = await db.mealEntry.findUnique({
+      where: { id: mealEntryId },
+      select: {
+        userId: true,
+        nutritionLogId: true,
+        calories: true,
+        protein: true,
+        carbs: true,
+        fat: true,
+      },
+    });
+
+    if (!entry) {
+      return { success: false, error: "Meal entry not found." };
+    }
+
+    // Guard: user can only delete their own meals
+    if (entry.userId !== user.id) {
+      return { success: false, error: "Not authorised." };
+    }
+
+    await db.$transaction(async (tx) => {
+      await tx.mealEntry.delete({ where: { id: mealEntryId } });
+
+      // Decrement the daily log totals — clamp to 0 so we never go negative
+      const log = await tx.nutritionLog.findUnique({
+        where: { id: entry.nutritionLogId },
+        select: { totalCalories: true, totalProtein: true, totalCarbs: true, totalFat: true },
+      });
+
+      if (log) {
+        await tx.nutritionLog.update({
+          where: { id: entry.nutritionLogId },
+          data: {
+            totalCalories: Math.max(0, log.totalCalories - entry.calories),
+            totalProtein: Math.max(0, log.totalProtein - entry.protein),
+            totalCarbs: Math.max(0, log.totalCarbs - entry.carbs),
+            totalFat: Math.max(0, log.totalFat - entry.fat),
+          },
+        });
+      }
+    });
+
+    revalidatePath("/nutrition");
+    revalidatePath("/dashboard");
+    return { success: true };
+  } catch (error) {
+    console.error("[nutrition-actions] deleteMealEntryAction:", error);
+    return { success: false, error: "Could not delete meal. Please try again." };
+  }
+}

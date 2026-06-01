@@ -9,6 +9,7 @@ import {
   Brain,
   CheckCircle2,
   ChefHat,
+  ChevronDown,
   Flame,
   Gauge,
   Leaf,
@@ -17,8 +18,12 @@ import {
   Search,
   ShieldCheck,
   Sparkles,
+  Star,
   Target,
+  Trash2,
+  TrendingUp,
   Utensils,
+  X,
   Zap,
 } from "lucide-react";
 import {
@@ -26,7 +31,10 @@ import {
   type MealAnalysisResult,
   type NutritionGoal,
 } from "@/lib/nutrition-parser";
-import { saveAnalyzedMealAction } from "@/lib/nutrition-actions";
+import {
+  deleteMealEntryAction,
+  saveAnalyzedMealAction,
+} from "@/lib/nutrition-actions";
 import { AiDietGenerator } from "@/components/nutrition/ai-diet-generator";
 
 export type NutritionHistoryMeal = {
@@ -86,6 +94,13 @@ const MEAL_TYPES = [
   { value: "SNACK", label: "Snack" },
 ];
 
+const MEAL_TYPE_COLORS: Record<string, string> = {
+  BREAKFAST: "bg-amber-100 text-amber-700",
+  LUNCH: "bg-emerald-100 text-emerald-700",
+  DINNER: "bg-violet-100 text-violet-700",
+  SNACK: "bg-cyan-100 text-cyan-700",
+};
+
 const DEMO_EXAMPLES = [
   "2 eggs, 1 slice whole wheat bread, tomato, yogurt",
   "100g chicken breast, rice, salad, 1 spoon olive oil",
@@ -95,6 +110,9 @@ const DEMO_EXAMPLES = [
 ];
 
 const MONTH_LABELS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const DAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+// ── Utilities ─────────────────────────────────────────────────────────────────
 
 function scoreGradient(score: number) {
   if (score >= 80) return "from-emerald-500 to-cyan-500";
@@ -119,9 +137,14 @@ function formatDateLabel(iso: string) {
   if (year && month && day) {
     return `${MONTH_LABELS[month - 1] ?? "Date"} ${day}`;
   }
-
   const date = new Date(iso);
   return `${MONTH_LABELS[date.getMonth()] ?? "Date"} ${date.getDate()}`;
+}
+
+function formatTime(iso: string) {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 }
 
 function todayKey() {
@@ -174,6 +197,43 @@ function metricCards(result: MealAnalysisResult) {
     },
   ];
 }
+
+// ── 7-day data builder ─────────────────────────────────────────────────────────
+
+type DayData = {
+  date: string;
+  label: string;
+  isToday: boolean;
+  calories: number;
+  protein: number;
+  carbs: number;
+  fat: number;
+};
+
+function getLast7DaysData(history: NutritionHistoryLog[]): DayData[] {
+  const logMap = new Map(history.map((l) => [l.logDate, l]));
+  const today = todayKey();
+  const days: DayData[] = [];
+
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    const log = logMap.get(key);
+    days.push({
+      date: key,
+      label: i === 0 ? "Today" : DAY_LABELS[d.getDay()] ?? "",
+      isToday: key === today,
+      calories: log?.totalCalories ?? 0,
+      protein: log?.totalProtein ?? 0,
+      carbs: log?.totalCarbs ?? 0,
+      fat: log?.totalFat ?? 0,
+    });
+  }
+  return days;
+}
+
+// ── Sub-components ────────────────────────────────────────────────────────────
 
 function TodaySummary({
   today,
@@ -248,7 +308,7 @@ function TodaySummary({
               </div>
               <div className="h-2.5 overflow-hidden rounded-full bg-slate-100">
                 <div
-                  className={`h-full rounded-full bg-gradient-to-r ${row.color}`}
+                  className={`h-full rounded-full bg-gradient-to-r ${row.color} transition-all duration-500`}
                   style={{ width: `${progress}%` }}
                 />
               </div>
@@ -259,6 +319,247 @@ function TodaySummary({
     </section>
   );
 }
+
+// ── Stats Section ─────────────────────────────────────────────────────────────
+
+function CssBarChart({
+  data,
+  valueKey,
+  color,
+  targetLine,
+  unit,
+}: {
+  data: DayData[];
+  valueKey: "calories" | "protein";
+  color: string;
+  targetLine?: number;
+  unit: string;
+}) {
+  const values = data.map((d) => d[valueKey]);
+  const maxVal = Math.max(...values, targetLine ?? 0, 1);
+
+  return (
+    <div className="space-y-2">
+      <div className="relative flex items-end gap-1" style={{ height: 80 }}>
+        {/* target line */}
+        {targetLine ? (
+          <div
+            className="pointer-events-none absolute inset-x-0 border-t-2 border-dashed border-slate-300"
+            style={{ bottom: `${(targetLine / maxVal) * 80}px` }}
+          />
+        ) : null}
+        {data.map((d) => {
+          const h = Math.max(3, Math.round((d[valueKey] / maxVal) * 76));
+          return (
+            <div key={d.date} className="group relative flex flex-1 flex-col items-center">
+              {/* tooltip */}
+              <div className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-bold text-white opacity-0 transition-opacity group-hover:opacity-100">
+                {Math.round(d[valueKey])}{unit}
+              </div>
+              <div
+                className={`w-full rounded-t ${color} transition-all duration-500 ${d.isToday ? "opacity-100" : "opacity-60"}`}
+                style={{ height: h }}
+              />
+            </div>
+          );
+        })}
+      </div>
+      <div className="flex gap-1">
+        {data.map((d) => (
+          <div key={d.date} className={`flex-1 text-center text-[9px] font-bold ${d.isToday ? "text-slate-800" : "text-slate-400"}`}>
+            {d.label}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MacroDistribution({ today }: { today: NutritionHistoryLog | undefined }) {
+  const p = today?.totalProtein ?? 0;
+  const c = today?.totalCarbs ?? 0;
+  const f = today?.totalFat ?? 0;
+  const total = p + c + f;
+
+  if (total === 0) {
+    return (
+      <div className="flex items-center justify-center h-14 rounded-lg bg-slate-50 text-xs font-semibold text-slate-400">
+        No macros logged today
+      </div>
+    );
+  }
+
+  const pPct = Math.round((p / total) * 100);
+  const cPct = Math.round((c / total) * 100);
+  const fPct = 100 - pPct - cPct;
+
+  return (
+    <div className="space-y-2">
+      <div className="flex h-5 w-full overflow-hidden rounded-full">
+        <div className="bg-emerald-500 transition-all" style={{ width: `${pPct}%` }} title={`Protein ${pPct}%`} />
+        <div className="bg-cyan-500 transition-all" style={{ width: `${cPct}%` }} title={`Carbs ${cPct}%`} />
+        <div className="bg-violet-500 transition-all" style={{ width: `${fPct}%` }} title={`Fat ${fPct}%`} />
+      </div>
+      <div className="flex gap-3 text-[11px] font-bold">
+        <span className="flex items-center gap-1"><span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />Protein {pPct}%</span>
+        <span className="flex items-center gap-1"><span className="inline-block h-2 w-2 rounded-full bg-cyan-500" />Carbs {cPct}%</span>
+        <span className="flex items-center gap-1"><span className="inline-block h-2 w-2 rounded-full bg-violet-500" />Fat {fPct}%</span>
+      </div>
+    </div>
+  );
+}
+
+function StatsSection({
+  history,
+  targets,
+}: {
+  history: NutritionHistoryLog[];
+  targets: NutritionAnalyzerClientProps["targets"];
+}) {
+  const days = getLast7DaysData(history);
+  const today = history.find((l) => l.logDate === todayKey());
+
+  const activeDays = days.filter((d) => d.calories > 0);
+  const avgCalories = activeDays.length
+    ? Math.round(activeDays.reduce((s, d) => s + d.calories, 0) / activeDays.length)
+    : 0;
+
+  const bestProteinDay = days.reduce<DayData | null>(
+    (best, d) => (d.protein > (best?.protein ?? 0) ? d : best),
+    null,
+  );
+
+  const goalDays = days.filter((d) => d.calories >= targets.calories * 0.8).length;
+  const goalPct = days.length ? Math.round((goalDays / days.length) * 100) : 0;
+
+  const totalMeals = history.reduce((s, l) => s + l.meals.length, 0);
+
+  const summaryCards = [
+    {
+      label: "7-day avg calories",
+      value: avgCalories ? `${avgCalories} kcal` : "—",
+      icon: Flame,
+      color: "bg-orange-50 text-orange-600",
+      border: "border-orange-100",
+    },
+    {
+      label: "Best protein day",
+      value: bestProteinDay && bestProteinDay.protein > 0
+        ? `${Math.round(bestProteinDay.protein)}g — ${bestProteinDay.label}`
+        : "—",
+      icon: Star,
+      color: "bg-emerald-50 text-emerald-600",
+      border: "border-emerald-100",
+    },
+    {
+      label: "Goal completion",
+      value: `${goalPct}%`,
+      icon: Target,
+      color: "bg-violet-50 text-violet-600",
+      border: "border-violet-100",
+    },
+    {
+      label: "Meals logged (7d)",
+      value: String(totalMeals),
+      icon: Utensils,
+      color: "bg-cyan-50 text-cyan-600",
+      border: "border-cyan-100",
+    },
+  ];
+
+  return (
+    <section className="space-y-4">
+      <div className="flex items-center gap-2">
+        <TrendingUp className="h-5 w-5 text-violet-600" />
+        <h2 className="text-lg font-extrabold text-slate-950">7-Day Statistics</h2>
+      </div>
+
+      {/* Summary stat cards */}
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        {summaryCards.map(({ label, value, icon: Icon, color, border }) => (
+          <div key={label} className={`rounded-lg border ${border} bg-white p-4 shadow-sm`}>
+            <div className={`mb-3 flex h-9 w-9 items-center justify-center rounded-md ${color}`}>
+              <Icon className="h-4 w-4" />
+            </div>
+            <p className="text-xs font-bold text-slate-500">{label}</p>
+            <p className="mt-1 text-xl font-extrabold text-slate-950">{value}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Charts */}
+      <div className="grid gap-4 lg:grid-cols-3">
+        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+          <div className="mb-4 flex items-center justify-between">
+            <div>
+              <p className="text-xs font-extrabold uppercase tracking-wide text-orange-600">Calories</p>
+              <p className="mt-0.5 text-sm font-bold text-slate-700">7-day trend</p>
+            </div>
+            <Flame className="h-4 w-4 text-orange-500" />
+          </div>
+          <CssBarChart
+            data={days}
+            valueKey="calories"
+            color="bg-gradient-to-t from-orange-500 to-pink-400"
+            targetLine={targets.calories}
+            unit=" kcal"
+          />
+          <p className="mt-2 text-[10px] font-semibold text-slate-400">
+            Dashed line = daily goal ({targets.calories} kcal)
+          </p>
+        </div>
+
+        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+          <div className="mb-4 flex items-center justify-between">
+            <div>
+              <p className="text-xs font-extrabold uppercase tracking-wide text-emerald-600">Protein</p>
+              <p className="mt-0.5 text-sm font-bold text-slate-700">7-day trend</p>
+            </div>
+            <Activity className="h-4 w-4 text-emerald-500" />
+          </div>
+          <CssBarChart
+            data={days}
+            valueKey="protein"
+            color="bg-gradient-to-t from-emerald-500 to-teal-400"
+            targetLine={targets.protein}
+            unit="g"
+          />
+          <p className="mt-2 text-[10px] font-semibold text-slate-400">
+            Dashed line = protein goal ({targets.protein}g)
+          </p>
+        </div>
+
+        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+          <div className="mb-4 flex items-center justify-between">
+            <div>
+              <p className="text-xs font-extrabold uppercase tracking-wide text-violet-600">Macros</p>
+              <p className="mt-0.5 text-sm font-bold text-slate-700">Today's distribution</p>
+            </div>
+            <BarChart3 className="h-4 w-4 text-violet-500" />
+          </div>
+          <MacroDistribution today={today} />
+
+          {today ? (
+            <div className="mt-4 grid grid-cols-3 gap-2 text-center">
+              {[
+                { label: "Protein", value: formatMacro(today.totalProtein), color: "text-emerald-600" },
+                { label: "Carbs", value: formatMacro(today.totalCarbs), color: "text-cyan-600" },
+                { label: "Fat", value: formatMacro(today.totalFat), color: "text-violet-600" },
+              ].map(({ label, value, color }) => (
+                <div key={label} className="rounded-md bg-slate-50 p-2">
+                  <p className={`text-sm font-extrabold ${color}`}>{value}</p>
+                  <p className="text-[10px] font-bold text-slate-400">{label}</p>
+                </div>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Analysis Results ──────────────────────────────────────────────────────────
 
 function AnalysisResults({
   result,
@@ -459,7 +760,17 @@ function AnalysisResults({
   );
 }
 
-function HistoryPanel({ history }: { history: NutritionHistoryLog[] }) {
+// ── History Panel ─────────────────────────────────────────────────────────────
+
+function HistoryPanel({
+  history,
+  deletingIds,
+  onDelete,
+}: {
+  history: NutritionHistoryLog[];
+  deletingIds: Set<string>;
+  onDelete: (mealId: string) => void;
+}) {
   return (
     <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
       <div className="mb-5 flex items-center justify-between">
@@ -473,33 +784,95 @@ function HistoryPanel({ history }: { history: NutritionHistoryLog[] }) {
       </div>
 
       {history.length === 0 ? (
-        <div className="rounded-md border border-dashed border-slate-200 bg-slate-50 p-5 text-sm font-semibold text-slate-500">
-          Saved analyzed meals will appear here.
+        <div className="rounded-md border border-dashed border-slate-200 bg-slate-50 p-8 text-center">
+          <Utensils className="mx-auto mb-3 h-8 w-8 text-slate-300" />
+          <p className="text-sm font-bold text-slate-500">No meals logged yet.</p>
+          <p className="mt-1 text-xs text-slate-400">Analyze and save a meal to start tracking.</p>
         </div>
       ) : (
-        <div className="space-y-4 max-h-[420px] overflow-y-auto pr-1 [scrollbar-width:thin]">
+        <div className="max-h-[560px] space-y-4 overflow-y-auto pr-1 [scrollbar-width:thin]">
           {history.map((log) => (
-            <div key={log.id} className="rounded-md border border-slate-100 bg-slate-50 p-4">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <p className="font-extrabold text-slate-800">{formatDateLabel(log.logDate)}</p>
-                <p className="text-xs font-bold text-slate-500">
-                  {Math.round(log.totalCalories)} kcal - {formatMacro(log.totalProtein)} protein
-                </p>
+            <div key={log.id} className="rounded-lg border border-slate-100 bg-slate-50 p-4">
+              {/* Day header */}
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-2">
+                <div className="flex items-center gap-2">
+                  <span className="font-extrabold text-slate-800">{formatDateLabel(log.logDate)}</span>
+                  {log.logDate === todayKey() && (
+                    <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-extrabold text-emerald-700">
+                      TODAY
+                    </span>
+                  )}
+                </div>
+                <div className="flex items-center gap-3 text-xs font-bold text-slate-500">
+                  <span className="flex items-center gap-1">
+                    <Flame className="h-3 w-3 text-orange-500" />
+                    {Math.round(log.totalCalories)} kcal
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Activity className="h-3 w-3 text-emerald-500" />
+                    {formatMacro(log.totalProtein)} P
+                  </span>
+                </div>
               </div>
-              <div className="mt-3 space-y-2">
-                {log.meals.slice(0, 4).map((meal) => (
-                  <div key={meal.id} className="flex items-center justify-between gap-3 rounded-md bg-white px-3 py-2">
-                    <div className="min-w-0 flex-1 overflow-x-auto whitespace-nowrap [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" title={meal.name}>
-                      <p className="text-sm font-bold text-slate-700">{meal.name}</p>
-                      <p className="text-xs font-semibold text-slate-400">{formatMealType(meal.mealType)}</p>
-                    </div>
-                    <div className="shrink-0 text-right text-xs font-bold text-slate-500">
-                      <p>{meal.calories} kcal</p>
-                      <p>{formatMacro(meal.protein)} P</p>
-                    </div>
-                  </div>
-                ))}
+
+              {/* Macro progress bar */}
+              <div className="mb-3 h-1.5 overflow-hidden rounded-full bg-slate-200">
+                {log.totalCalories > 0 && (
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500"
+                    style={{ width: `${Math.min(100, (log.totalCalories / 2200) * 100)}%` }}
+                  />
+                )}
               </div>
+
+              {/* Meal entries */}
+              {log.meals.length === 0 ? (
+                <p className="text-xs text-slate-400">No individual meals recorded.</p>
+              ) : (
+                <div className="space-y-2">
+                  {log.meals.map((meal) => (
+                    <div
+                      key={meal.id}
+                      className="flex items-center gap-3 rounded-md border border-slate-100 bg-white px-3 py-2"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <p className="text-sm font-bold text-slate-700 truncate max-w-[180px]" title={meal.name}>
+                            {meal.name}
+                          </p>
+                          <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-extrabold ${MEAL_TYPE_COLORS[meal.mealType] ?? "bg-slate-100 text-slate-600"}`}>
+                            {formatMealType(meal.mealType)}
+                          </span>
+                        </div>
+                        <div className="mt-1 flex flex-wrap gap-2 text-[11px] font-semibold text-slate-500">
+                          <span>{meal.calories} kcal</span>
+                          <span className="text-emerald-600">{formatMacro(meal.protein)} P</span>
+                          <span className="text-cyan-600">{formatMacro(meal.carbs)} C</span>
+                          <span className="text-violet-600">{formatMacro(meal.fat)} F</span>
+                          {meal.createdAt && (
+                            <span className="text-slate-400">{formatTime(meal.createdAt)}</span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Delete button */}
+                      <button
+                        type="button"
+                        onClick={() => onDelete(meal.id)}
+                        disabled={deletingIds.has(meal.id)}
+                        aria-label={`Delete ${meal.name}`}
+                        className="shrink-0 flex h-7 w-7 items-center justify-center rounded-md text-slate-300 transition hover:bg-red-50 hover:text-red-500 disabled:cursor-wait disabled:opacity-50"
+                      >
+                        {deletingIds.has(meal.id) ? (
+                          <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                        ) : (
+                          <Trash2 className="h-3.5 w-3.5" />
+                        )}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -507,6 +880,8 @@ function HistoryPanel({ history }: { history: NutritionHistoryLog[] }) {
     </section>
   );
 }
+
+// ── Main component ────────────────────────────────────────────────────────────
 
 export function NutritionAnalyzerClient({
   initialGoal,
@@ -525,6 +900,9 @@ export function NutritionAnalyzerClient({
   const [saveStatus, setSaveStatus] = useState<string | null>(null);
   const [savedKey, setSavedKey] = useState<string | null>(null);
   const [isDietGenOpen, setIsDietGenOpen] = useState(false);
+  const [deletingIds, setDeletingIds] = useState<Set<string>>(new Set());
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+  const [isStatsOpen, setIsStatsOpen] = useState(false);
 
   const today = history.find((log) => log.logDate === todayKey());
   const currentResultKey = analysis
@@ -536,6 +914,19 @@ export function NutritionAnalyzerClient({
     () => GOAL_OPTIONS.find((option) => option.value === goal) ?? GOAL_OPTIONS[0],
     [goal],
   );
+
+  /** Summary numbers shown in the compact stats badge. */
+  const statsSummary = useMemo(() => {
+    const days = getLast7DaysData(history);
+    const activeDays = days.filter((d) => d.calories > 0);
+    const avgCalories = activeDays.length
+      ? Math.round(activeDays.reduce((s, d) => s + d.calories, 0) / activeDays.length)
+      : 0;
+    const goalDays = days.filter((d) => d.calories >= targets.calories * 0.8).length;
+    const goalPct = days.length ? Math.round((goalDays / days.length) * 100) : 0;
+    const totalMeals = history.reduce((s, l) => s + l.meals.length, 0);
+    return { avgCalories, goalPct, totalMeals };
+  }, [history, targets.calories]);
 
   function handleAnalyze(nextText = mealText) {
     setIsAnalyzing(true);
@@ -573,6 +964,25 @@ export function NutritionAnalyzerClient({
       } else {
         setSaveStatus(result.error ?? "Meal could not be saved.");
       }
+    });
+  }
+
+  async function handleDeleteMeal(mealId: string) {
+    setDeleteError(null);
+    setDeletingIds((prev) => new Set([...prev, mealId]));
+
+    const result = await deleteMealEntryAction(mealId);
+
+    if (result.success) {
+      router.refresh();
+    } else {
+      setDeleteError(result.error ?? "Could not delete meal.");
+    }
+
+    setDeletingIds((prev) => {
+      const next = new Set(prev);
+      next.delete(mealId);
+      return next;
     });
   }
 
@@ -633,6 +1043,100 @@ export function NutritionAnalyzerClient({
           onClose={() => setIsDietGenOpen(false)}
         />
       )}
+
+      {/* ── Stats compact toggle + animated drawer ── */}
+      <section>
+        {/* Clickable compact badge */}
+        <button
+          type="button"
+          onClick={() => setIsStatsOpen((o) => !o)}
+          aria-expanded={isStatsOpen}
+          className="w-full rounded-xl border border-slate-200 bg-white px-5 py-3.5 shadow-sm transition-all hover:border-violet-200 hover:shadow-md"
+        >
+          <div className="flex items-center gap-4">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-sm">
+              <TrendingUp className="h-4 w-4" />
+            </div>
+
+            <div className="min-w-0 flex-1 text-left">
+              <p className="text-xs font-extrabold uppercase tracking-wide text-violet-600">
+                7-Day Nutrition Stats
+              </p>
+              <div className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1">
+                <span className="flex items-center gap-1 text-xs font-bold text-slate-600">
+                  <Utensils className="h-3 w-3 text-cyan-500" />
+                  <span className="text-slate-900">{statsSummary.totalMeals}</span>
+                  {" "}meals logged
+                </span>
+                <span className="flex items-center gap-1 text-xs font-bold text-slate-600">
+                  <Flame className="h-3 w-3 text-orange-500" />
+                  avg{" "}
+                  <span className="text-slate-900">
+                    {statsSummary.avgCalories || "—"}
+                  </span>{" "}
+                  kcal/day
+                </span>
+                <span className="flex items-center gap-1 text-xs font-bold text-slate-600">
+                  <Target className="h-3 w-3 text-emerald-500" />
+                  goal:{" "}
+                  <span
+                    className={
+                      statsSummary.goalPct >= 70
+                        ? "text-emerald-600"
+                        : "text-orange-600"
+                    }
+                  >
+                    {statsSummary.goalPct}%
+                  </span>
+                </span>
+              </div>
+            </div>
+
+            <div className="flex shrink-0 items-center gap-2">
+              <span className="hidden text-xs font-bold text-slate-400 sm:block">
+                {isStatsOpen ? "Hide stats" : "View details"}
+              </span>
+              <ChevronDown
+                className={`h-4 w-4 text-slate-400 transition-transform duration-300 ${
+                  isStatsOpen ? "rotate-180" : ""
+                }`}
+              />
+            </div>
+          </div>
+        </button>
+
+        {/*
+          CSS grid-rows animation — expands from 0fr to 1fr without
+          needing a known pixel height. Works in all modern browsers.
+        */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateRows: isStatsOpen ? "1fr" : "0fr",
+            transition: "grid-template-rows 0.35s ease",
+          }}
+        >
+          <div className="overflow-hidden">
+            <div className="pt-4">
+              <StatsSection history={history} targets={targets} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Delete error banner */}
+      {deleteError ? (
+        <div className="flex items-center justify-between gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3">
+          <p className="text-sm font-bold text-red-700">{deleteError}</p>
+          <button
+            type="button"
+            onClick={() => setDeleteError(null)}
+            className="text-red-400 hover:text-red-600"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+      ) : null}
 
       <div className="grid gap-6 xl:grid-cols-[1fr_360px]">
         <div className="space-y-6">
@@ -743,7 +1247,11 @@ export function NutritionAnalyzerClient({
 
         <div className="space-y-6">
           <TodaySummary today={today} targets={targets} />
-          <HistoryPanel history={history} />
+          <HistoryPanel
+            history={history}
+            deletingIds={deletingIds}
+            onDelete={handleDeleteMeal}
+          />
         </div>
       </div>
 
