@@ -11,6 +11,7 @@ import {
   ChevronLeft,
   Clock,
   Dumbbell,
+  Heart,
 } from "lucide-react";
 
 /* ── Types ───────────────────────────────────────────────── */
@@ -27,6 +28,7 @@ export type Conversation = {
   }[];
   lastMessageAt: string; // ISO string
   matchId: string | null;
+  isConsultation?: boolean;
 };
 
 type Props = {
@@ -316,12 +318,17 @@ export function MessagesClient({ conversations, currentUserId }: Props) {
                         <p className="text-xs text-slate-500 truncate mt-0.5">
                           {preview}
                         </p>
-                        {conv.matchId && (
+                        {conv.matchId ? (
                           <span className="inline-flex items-center gap-1 text-[10px] text-emerald-400 mt-0.5">
                             <Dumbbell className="w-2.5 h-2.5" />
                             Buddy
                           </span>
-                        )}
+                        ) : conv.isConsultation ? (
+                          <span className="inline-flex items-center gap-1 text-[10px] text-violet-400 mt-0.5">
+                            <Heart className="w-2.5 h-2.5 fill-violet-400/20" />
+                            Consultation
+                          </span>
+                        ) : null}
                       </div>
                     </button>
                   );
@@ -359,12 +366,17 @@ export function MessagesClient({ conversations, currentUserId }: Props) {
                       <p className="font-semibold text-white text-sm">{activeConv.partnerName}</p>
                       <p className="text-xs text-slate-500 truncate">{activeConv.partnerEmail}</p>
                     </div>
-                    {activeConv.matchId && (
+                    {activeConv.matchId ? (
                       <div className="flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs px-2.5 py-1 rounded-full">
                         <Dumbbell className="w-3 h-3" />
                         <span className="hidden sm:inline">Active Match</span>
                       </div>
-                    )}
+                    ) : activeConv.isConsultation ? (
+                      <div className="flex items-center gap-1.5 bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs px-2.5 py-1 rounded-full">
+                        <Heart className="w-3 h-3 fill-violet-400/20" />
+                        <span className="hidden sm:inline">Active Consultation</span>
+                      </div>
+                    ) : null}
                   </div>
 
                   {/* Messages */}

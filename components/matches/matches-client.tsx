@@ -21,6 +21,7 @@ import {
   Target,
   UserCheck,
   Users,
+  Search,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -501,6 +502,7 @@ function BuddyCard({ buddy }: { buddy: BuddyProfile }) {
 /* ─── Main MatchesClient ─────────────────────────────────── */
 export function MatchesClient({ buddies }: MatchesClientProps) {
   const [activeTab, setActiveTab] = useState<MatchTab>("best");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const sortedBuddies = useMemo(
     () =>
@@ -522,10 +524,23 @@ export function MatchesClient({ buddies }: MatchesClientProps) {
       : 0;
 
   const visibleBuddies = (() => {
-    if (activeTab === "nearby") return nearbyBuddies;
-    if (activeTab === "pending") return pendingRequests;
-    if (activeTab === "active") return activeMatches;
-    return sortedBuddies;
+    let list = sortedBuddies;
+    if (activeTab === "nearby") list = nearbyBuddies;
+    else if (activeTab === "pending") list = pendingRequests;
+    else if (activeTab === "active") list = activeMatches;
+
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase().trim();
+      list = list.filter(
+        (buddy) =>
+          (buddy.fullName?.toLowerCase() || "").includes(q) ||
+          buddy.email.toLowerCase().includes(q) ||
+          (buddy.bio?.toLowerCase() || "").includes(q) ||
+          (buddy.city?.toLowerCase() || "").includes(q) ||
+          (buddy.district?.toLowerCase() || "").includes(q)
+      );
+    }
+    return list;
   })();
 
   const tabs: Array<{
@@ -577,6 +592,26 @@ export function MatchesClient({ buddies }: MatchesClientProps) {
           </div>
         </div>
       </section>
+
+      {/* ── Search Bar ── */}
+      <div className="relative rounded-xl border border-slate-200 bg-white p-3 shadow-sm flex items-center">
+        <Search className="absolute left-6 w-4 h-4 text-slate-400" />
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search buddies by name, email, bio or location (city/district)..."
+          className="w-full pl-10 pr-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-lg outline-none focus:border-violet-400 focus:bg-white transition-all text-slate-800"
+        />
+        {searchQuery && (
+          <button
+            onClick={() => setSearchQuery("")}
+            className="absolute right-6 text-xs font-bold text-slate-400 hover:text-slate-600"
+          >
+            Clear
+          </button>
+        )}
+      </div>
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {tabs.map(({ id, label, count, icon: Icon }) => (

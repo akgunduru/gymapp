@@ -203,6 +203,7 @@ export async function sendMessageAction(
   }
 
   try {
+    // 1. Check for active buddy match
     const activeMatch = buddyMatchId
       ? await db.buddyMatch.findFirst({
           where: {
@@ -226,22 +227,59 @@ export async function sendMessageAction(
           select: { id: true },
         });
 
-    if (!activeMatch) {
-      return { success: false, error: "You can message active buddy matches only." };
+    if (activeMatch) {
+      await db.message.create({
+        data: {
+          senderId: me.id,
+          receiverId,
+          content: content.trim(),
+          buddyMatchId: activeMatch.id,
+        },
+      });
+
+      revalidatePath("/messages");
+      revalidatePath("/matches");
+      return { success: true };
     }
 
-    await db.message.create({
-      data: {
-        senderId: me.id,
-        receiverId,
-        content: content.trim(),
-        buddyMatchId: activeMatch.id,
+    // 2. Fallback: Check for active accepted consultation request
+    const activeConsultation = await db.consultationRequest.findFirst({
+      where: {
+        status: "ACCEPTED",
+        OR: [
+          {
+            requesterId: me.id,
+            professionalProfile: {
+              userId: receiverId,
+            },
+          },
+          {
+            requesterId: receiverId,
+            professionalProfile: {
+              userId: me.id,
+            },
+          },
+        ],
       },
+      select: { id: true },
     });
 
-    revalidatePath("/messages");
-    revalidatePath("/matches");
-    return { success: true };
+    if (activeConsultation) {
+      await db.message.create({
+        data: {
+          senderId: me.id,
+          receiverId,
+          content: content.trim(),
+          consultationRequestId: activeConsultation.id,
+        },
+      });
+
+      revalidatePath("/messages");
+      revalidatePath("/consultations");
+      return { success: true };
+    }
+
+    return { success: false, error: "You can message active buddy matches or active consultations only." };
   } catch (err) {
     console.error("[matching-actions] sendMessageAction:", err);
     return { success: false, error: "Failed to send message. Please try again." };

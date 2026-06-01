@@ -163,6 +163,51 @@ const fieldClass =
   "h-11 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-100 disabled:opacity-50";
 const labelClass = "block text-xs font-bold uppercase tracking-wide text-slate-500 mb-1.5";
 
+/* ─── Turkey City/District Coordinate Coordinates Mapping ── */
+const TURKEY_COORDINATES: Record<string, Record<string, { lat: number; lng: number }>> = {
+  istanbul: {
+    kadikoy: { lat: 40.9919, lng: 29.0278 },
+    besiktas: { lat: 41.0422, lng: 29.0083 },
+    sisli: { lat: 41.0600, lng: 28.9870 },
+    uskudar: { lat: 41.0267, lng: 29.0150 },
+    fatih: { lat: 41.0136, lng: 28.9497 },
+    beyoglu: { lat: 41.0369, lng: 28.9775 },
+    atasehir: { lat: 40.9847, lng: 29.1064 },
+    maltepe: { lat: 40.9246, lng: 29.1311 },
+    kartal: { lat: 40.9081, lng: 29.1915 },
+    pendik: { lat: 40.8769, lng: 29.2348 },
+    umraniye: { lat: 41.0259, lng: 29.1197 },
+    sariyer: { lat: 41.1686, lng: 29.0470 },
+    bakirkoy: { lat: 40.9782, lng: 28.8722 },
+  },
+  ankara: {
+    cankaya: { lat: 39.9208, lng: 32.8541 },
+    yenimahalle: { lat: 39.9719, lng: 32.7981 },
+    kecioren: { lat: 39.9844, lng: 32.8624 },
+    altindag: { lat: 39.9408, lng: 32.8653 },
+    etimesgut: { lat: 39.9458, lng: 32.6686 },
+    mamak: { lat: 39.9272, lng: 32.9152 },
+    sincan: { lat: 39.9781, lng: 32.5714 },
+    golbasi: { lat: 39.7904, lng: 32.8055 },
+  },
+  izmir: {
+    karsiyaka: { lat: 38.4594, lng: 27.1147 },
+    konak: { lat: 38.4189, lng: 27.1287 },
+    bornova: { lat: 38.4633, lng: 27.2167 },
+    buca: { lat: 38.3842, lng: 27.1642 },
+    alsancak: { lat: 38.4385, lng: 27.1420 },
+    cesme: { lat: 38.3246, lng: 26.3040 },
+  }
+};
+
+const CITY_FALLBACKS: Record<string, { lat: number; lng: number }> = {
+  istanbul: { lat: 41.0082, lng: 28.9784 },
+  ankara: { lat: 39.9334, lng: 32.8597 },
+  izmir: { lat: 38.4237, lng: 27.1428 },
+  bursa: { lat: 40.1885, lng: 29.0610 },
+  antalya: { lat: 36.8969, lng: 30.7133 },
+};
+
 /* ─── Main component ─────────────────────────────────────── */
 export function ProfileClient(props: ProfileClientProps) {
   const {
@@ -184,6 +229,86 @@ export function ProfileClient(props: ProfileClientProps) {
   const [district, setDistrict] = useState(props.district);
   const [showSuccess, setShowSuccess] = useState(updated);
   const avatarInputRef = useRef<HTMLInputElement>(null);
+
+  /* Geolocating states & side effect */
+  const [latitude, setLatitude] = useState(props.latitude);
+  const [longitude, setLongitude] = useState(props.longitude);
+  const [isResolvingLocation, setIsResolvingLocation] = useState(false);
+
+  useEffect(() => {
+    if (!city.trim()) return;
+
+    let active = true;
+    const delayDebounceFn = setTimeout(async () => {
+      const cleanCity = city.trim().toLowerCase().replace("ı", "i").replace("ş", "s").replace("ç", "c").replace("ğ", "g").replace("ü", "u").replace("ö", "o");
+      const cleanDistrict = district.trim().toLowerCase().replace("ı", "i").replace("ş", "s").replace("ç", "c").replace("ğ", "g").replace("ü", "u").replace("ö", "o");
+
+      // 1. Static coordinates lookup first
+      if (TURKEY_COORDINATES[cleanCity] && TURKEY_COORDINATES[cleanCity][cleanDistrict]) {
+        const coords = TURKEY_COORDINATES[cleanCity][cleanDistrict];
+        setLatitude(coords.lat);
+        setLongitude(coords.lng);
+        return;
+      }
+      
+      if (CITY_FALLBACKS[cleanCity] && !cleanDistrict) {
+        const coords = CITY_FALLBACKS[cleanCity];
+        setLatitude(coords.lat);
+        setLongitude(coords.lng);
+        return;
+      }
+
+      // 2. OpenStreetMap Nominatim API Geocode
+      setIsResolvingLocation(true);
+      try {
+        const query = `${district ? district + ', ' : ''}${city}, Turkey`;
+        const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=1`, {
+          headers: {
+            'User-Agent': 'SocialGymApp/1.0'
+          }
+        });
+        if (res.ok && active) {
+          const data = await res.json();
+          if (data && data.length > 0) {
+            setLatitude(parseFloat(data[0].lat));
+            setLongitude(parseFloat(data[0].lon));
+            setIsResolvingLocation(false);
+            return;
+          }
+        }
+      } catch (err) {
+        console.error("Nominatim geocode failed:", err);
+      }
+
+      // 3. Fallback to just city
+      if (active) {
+        try {
+          const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city + ', Turkey')}&format=json&limit=1`, {
+            headers: {
+              'User-Agent': 'SocialGymApp/1.0'
+            }
+          });
+          if (res.ok && active) {
+            const data = await res.json();
+            if (data && data.length > 0) {
+              setLatitude(parseFloat(data[0].lat));
+              setLongitude(parseFloat(data[0].lon));
+            }
+          }
+        } catch (err) {
+          console.error("Nominatim city geocode failed:", err);
+        }
+      }
+      if (active) {
+        setIsResolvingLocation(false);
+      }
+    }, 800); // 800ms debounce to wait for user to finish typing
+
+    return () => {
+      active = false;
+      clearTimeout(delayDebounceFn);
+    };
+  }, [city, district]);
 
   /* Load avatar from localStorage on mount */
   useEffect(() => {
@@ -679,19 +804,35 @@ export function ProfileClient(props: ProfileClientProps) {
                 />
               </div>
               <div>
-                <label htmlFor="latitude" className={labelClass}>Latitude</label>
+                <div className="flex justify-between items-center mb-1.5">
+                  <label htmlFor="latitude" className="block text-xs font-bold uppercase tracking-wide text-slate-500">Latitude</label>
+                  {isResolvingLocation ? (
+                    <span className="text-[10px] font-bold text-amber-500 animate-pulse">Konum Hesaplanıyor...</span>
+                  ) : (
+                    <span className="text-[10px] font-bold text-emerald-500">✓ Otomatik Eşleşti</span>
+                  )}
+                </div>
                 <input
                   id="latitude" name="latitude" type="number" step="0.000001" required
-                  defaultValue={props.latitude}
-                  className={fieldClass}
+                  value={latitude}
+                  readOnly
+                  className={`${fieldClass} cursor-not-allowed bg-slate-100 border-slate-200 text-slate-500 focus:border-slate-200 focus:ring-0`}
                 />
               </div>
               <div>
-                <label htmlFor="longitude" className={labelClass}>Longitude</label>
+                <div className="flex justify-between items-center mb-1.5">
+                  <label htmlFor="longitude" className="block text-xs font-bold uppercase tracking-wide text-slate-500">Longitude</label>
+                  {isResolvingLocation ? (
+                    <span className="text-[10px] font-bold text-amber-500 animate-pulse">Konum Hesaplanıyor...</span>
+                  ) : (
+                    <span className="text-[10px] font-bold text-emerald-500">✓ Otomatik Eşleşti</span>
+                  )}
+                </div>
                 <input
                   id="longitude" name="longitude" type="number" step="0.000001" required
-                  defaultValue={props.longitude}
-                  className={fieldClass}
+                  value={longitude}
+                  readOnly
+                  className={`${fieldClass} cursor-not-allowed bg-slate-100 border-slate-200 text-slate-500 focus:border-slate-200 focus:ring-0`}
                 />
               </div>
             </div>

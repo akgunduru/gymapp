@@ -51,6 +51,30 @@ export default async function MessagesPage() {
     matchByPartnerId.set(partnerId, match.id);
   }
 
+  /* ── Fetch active consultations for messaging context ───── */
+  const activeConsultations = await db.consultationRequest.findMany({
+    where: {
+      status: "ACCEPTED",
+      OR: [
+        { requesterId: me.id },
+        { professionalProfile: { userId: me.id } },
+      ],
+    },
+    select: {
+      id: true,
+      requesterId: true,
+      professionalProfile: {
+        select: { userId: true },
+      },
+    },
+  });
+
+  const consultationByPartnerId = new Set<string>();
+  for (const c of activeConsultations) {
+    const partnerId = c.requesterId === me.id ? c.professionalProfile.userId : c.requesterId;
+    consultationByPartnerId.add(partnerId);
+  }
+
   /* ── Group messages by conversation partner ─────────────── */
   const convMap = new Map<
     string,
@@ -103,6 +127,7 @@ export default async function MessagesPage() {
       messages: conv.messages,
       lastMessageAt: conv.lastAt.toISOString(),
       matchId: matchByPartnerId.get(conv.partnerId) ?? null,
+      isConsultation: consultationByPartnerId.has(conv.partnerId),
     }));
 
   return (

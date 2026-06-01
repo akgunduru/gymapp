@@ -12,6 +12,7 @@ import {
   Stethoscope,
   User,
   Users,
+  Activity,
 } from "lucide-react";
 import { NAV_ITEMS } from "@/lib/constants";
 import type { CurrentUser } from "@/lib/auth";
@@ -25,6 +26,7 @@ const navIcons = {
   "/workouts": Dumbbell,
   "/nutrition": Apple,
   "/professionals": Stethoscope,
+  "/consultations": Activity,
   "/messages": MessageCircle,
   "/admin": ShieldCheck,
 } as const;

@@ -28,10 +28,41 @@ export async function requestConsultationAction(
   }
 
   try {
-    // If a real DB professional profile ID was provided, use it
-    if (professionalDbId) {
+    let targetProfileId: string | null = null;
+
+    const isValidUuid = (id: string) =>
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+
+    if (professionalDbId && isValidUuid(professionalDbId)) {
+      targetProfileId = professionalDbId;
+    } else if (professionalName) {
+      // Try to find the dietitian/trainer in the database by their name
+      const cleanedName = professionalName
+        .replace(/^(Uzm\.\s*Dyt\.\s*|Dyt\.\s*|Dr\.\s*|Pt\.\s*|Personal\s*Trainer\s*)/i, "")
+        .trim();
+
+      const matchedProfile = await db.professionalProfile.findFirst({
+        where: {
+          user: {
+            profile: {
+              fullName: {
+                contains: cleanedName,
+                mode: "insensitive",
+              },
+            },
+          },
+        },
+        select: { id: true },
+      });
+
+      if (matchedProfile) {
+        targetProfileId = matchedProfile.id;
+      }
+    }
+
+    if (targetProfileId) {
       const profile = await db.professionalProfile.findUnique({
-        where: { id: professionalDbId },
+        where: { id: targetProfileId },
         select: { id: true },
       });
 
@@ -40,7 +71,7 @@ export async function requestConsultationAction(
         const existing = await db.consultationRequest.findFirst({
           where: {
             requesterId: me.id,
-            professionalProfileId: professionalDbId,
+            professionalProfileId: targetProfileId,
             status: { in: ["PENDING", "ACCEPTED"] },
           },
           select: { id: true },
@@ -56,7 +87,7 @@ export async function requestConsultationAction(
         await db.consultationRequest.create({
           data: {
             requesterId: me.id,
-            professionalProfileId: professionalDbId,
+            professionalProfileId: targetProfileId,
             topic: topic.trim(),
             message: message.trim(),
           },
@@ -74,6 +105,175 @@ export async function requestConsultationAction(
     return { success: true };
   } catch (err) {
     console.error("[consultation-actions] requestConsultationAction:", err);
+    return { success: false, error: "Something went wrong. Please try again." };
+  }
+}
+
+/**
+ * Accept a pending consultation request.
+ * Automatically sends an initial greeting message to open the chat thread.
+ */
+export async function acceptConsultationAction(
+  requestId: string,
+): Promise<ConsultationActionResult> {
+  const me = await requireUser();
+
+  try {
+    const request = await db.consultationRequest.findUnique({
+      where: { id: requestId },
+      select: {
+        id: true,
+        topic: true,
+        requesterId: true,
+        status: true,
+        professionalProfile: {
+          select: {
+            id: true,
+            userId: true,
+          },
+        },
+      },
+    });
+
+    if (!request) {
+      return { success: false, error: "Consultation request not found." };
+    }
+
+    // Ensure only the assigned professional can accept it
+    if (request.professionalProfile.userId !== me.id) {
+      return { success: false, error: "Unauthorized action." };
+    }
+
+    if (request.status !== "PENDING") {
+      return { success: false, error: "Request is not in pending status." };
+    }
+
+    // Update request status to ACCEPTED
+    await db.consultationRequest.update({
+      where: { id: requestId },
+      data: {
+        status: "ACCEPTED",
+        scheduledAt: new Date(),
+      },
+    });
+
+    // Create an automatic message to open the chat thread
+    await db.message.create({
+      data: {
+        senderId: me.id, // the professional
+        receiverId: request.requesterId, // the client
+        content: `Hello! I have accepted your consultation request about "${request.topic}". How can I help you today?`,
+        consultationRequestId: request.id,
+      },
+    });
+
+    revalidatePath("/consultations");
+    revalidatePath("/messages");
+
+    return { success: true };
+  } catch (err) {
+    console.error("[consultation-actions] acceptConsultationAction:", err);
+    return { success: false, error: "Something went wrong. Please try again." };
+  }
+}
+
+/**
+ * Reject a pending consultation request.
+ */
+export async function rejectConsultationAction(
+  requestId: string,
+): Promise<ConsultationActionResult> {
+  const me = await requireUser();
+
+  try {
+    const request = await db.consultationRequest.findUnique({
+      where: { id: requestId },
+      select: {
+        id: true,
+        status: true,
+        professionalProfile: {
+          select: {
+            userId: true,
+          },
+        },
+      },
+    });
+
+    if (!request) {
+      return { success: false, error: "Consultation request not found." };
+    }
+
+    // Ensure only the assigned professional can reject it
+    if (request.professionalProfile.userId !== me.id) {
+      return { success: false, error: "Unauthorized action." };
+    }
+
+    if (request.status !== "PENDING") {
+      return { success: false, error: "Request is not in pending status." };
+    }
+
+    await db.consultationRequest.update({
+      where: { id: requestId },
+      data: {
+        status: "REJECTED",
+      },
+    });
+
+    revalidatePath("/consultations");
+    return { success: true };
+  } catch (err) {
+    console.error("[consultation-actions] rejectConsultationAction:", err);
+    return { success: false, error: "Something went wrong. Please try again." };
+  }
+}
+
+/**
+ * Complete an accepted/active consultation.
+ */
+export async function completeConsultationAction(
+  requestId: string,
+): Promise<ConsultationActionResult> {
+  const me = await requireUser();
+
+  try {
+    const request = await db.consultationRequest.findUnique({
+      where: { id: requestId },
+      select: {
+        id: true,
+        status: true,
+        professionalProfile: {
+          select: {
+            userId: true,
+          },
+        },
+      },
+    });
+
+    if (!request) {
+      return { success: false, error: "Consultation request not found." };
+    }
+
+    // Ensure only the assigned professional can complete it
+    if (request.professionalProfile.userId !== me.id) {
+      return { success: false, error: "Unauthorized action." };
+    }
+
+    if (request.status !== "ACCEPTED") {
+      return { success: false, error: "Only active consultations can be completed." };
+    }
+
+    await db.consultationRequest.update({
+      where: { id: requestId },
+      data: {
+        status: "COMPLETED",
+        completedAt: new Date(),
+      },
+    });
+
+    revalidatePath("/consultations");
+    return { success: true };
+  } catch (err) {
+    console.error("[consultation-actions] completeConsultationAction:", err);
     return { success: false, error: "Something went wrong. Please try again." };
   }
 }
